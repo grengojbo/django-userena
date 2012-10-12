@@ -610,7 +610,12 @@ def profile_detail(
     """
     user = get_object_or_404(User,
                              username__iexact=username)
-    profile = user.get_profile()
+    profile_model = get_profile_model()
+    try:
+        profile = user.get_profile()
+    except profile_model.DoesNotExist:
+        profile = profile_model(user=user)
+        profile.save()
     if not profile.can_view_profile(request.user):
         return HttpResponseForbidden(_("You don't have permission to view this profile."))
     if not extra_context: extra_context = dict()
