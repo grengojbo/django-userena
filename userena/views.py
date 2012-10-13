@@ -25,6 +25,9 @@ from userena import settings as userena_settings
 from guardian.decorators import permission_required_or_403
 
 import warnings
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 class ExtraContextTemplateView(TemplateView):
     """ Add extra context to a simple template view """
@@ -48,6 +51,7 @@ class ProfileListView(ListView):
     extra_context=None
 
     def get_context_data(self, **kwargs):
+        logging.info('ProfileListView')
         # Call the base implementation first to get a context
         context = super(ProfileListView, self).get_context_data(**kwargs)
         try:
