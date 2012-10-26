@@ -585,12 +585,9 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
     if not extra_context: extra_context = dict()
     extra_context['form'] = form
     extra_context['profile'] = profile
-    return ExtraContextTemplateView.as_view(template_name=template_name,
-                                            extra_context=extra_context)(request)
-def profile_detail(
-    request, username,
-    template_name=userena_settings.USERENA_PROFILE_DETAIL_TEMPLATE,
-    extra_context=None, **kwargs):
+    return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
+
+def profile_detail(request, username, template_name=userena_settings.USERENA_PROFILE_DETAIL_TEMPLATE, extra_context=None, **kwargs):
     """
     Detailed view of an user.
 
