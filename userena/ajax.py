@@ -8,6 +8,8 @@ from userena.utils import signin_redirect, get_profile_model
 from userena import signals as userena_signals
 from django.core.urlresolvers import reverse
 from userena import settings as userena_settings
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
 from userena.decorators import secure_required
 from django.http import HttpResponse
@@ -37,9 +39,6 @@ class ErrorList(list):
 def signup_form(request, form, success_url=None):
     logger.debug("signup_form")
     dajax = Dajax()
-    #dajax.alert("Hello World!")
-    #dajax.add_css_class('div .alert', 'red')
-    #return render_to_response('json.html', {'json': dajax.json()}, mimetype="application/json", context_instance = RequestContext(request))
     signup_form = SignupForm
     if userena_settings.USERENA_WITHOUT_USERNAMES:
         signup_form = SignupFormOnlyEmail
@@ -102,12 +101,11 @@ def signin_form_test(request, form, success_url=None):
             else: request.session.set_expiry(0)
 
             # TODO: добавить сообщения
-            #if userena_settings.USERENA_USE_MESSAGES:
-            #    messages.success(request, _('You have been signed in.'), fail_silently=True)
+            if userena_settings.USERENA_USE_MESSAGES:
+                messages.success(request, _('You have been signed in.'), fail_silently=True)
 
-            # Whereto now?
-            #redirect_to = redirect_signin_function(request.REQUEST.get(redirect_field_name), user)
-            redirect_to = reverse('userena_disabled', kwargs={'username': user.username})
+            # TODO: изменить переадресацию после регистрации
+            redirect_to = signin_redirect(REDIRECT_FIELD_NAME, user)
         else:
             redirect_to = reverse('userena_disabled', kwargs={'username': user.username})
 
