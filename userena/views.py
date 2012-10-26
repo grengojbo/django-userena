@@ -77,8 +77,9 @@ class ProfileListView(ListView):
         return queryset
 
 @secure_required
-def signup(request, signup_form=SignupForm, template_name='userena/sigup_ajax.html', success_url=None, extra_context=None):
-    #def signup(request, signup_form=SignupForm, template_name='userena/signup_form.html', success_url=None, extra_context=None):
+def signup(request, signup_form=SignupForm,
+           template_name='userena/signup_form.html', success_url=None,
+           extra_context=None):
     """
     Signup of an account.
 
