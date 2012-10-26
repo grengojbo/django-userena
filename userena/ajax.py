@@ -21,10 +21,21 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+class ErrorList(list):
+    """
+    A collection of errors that knows how to display itself in various formats.
+    """
+    def __unicode__(self):
+        return self.as_ul()
+
+    def as_ul(self):
+        if not self: return u''
+
 #@dajaxice_register(method='GET')
 #@ensure_csrf_cookie
 @dajaxice_register(method='POST', name='sigup_form')
-def sigup_form_test(request, form, success_url=None):
+def signup_form(request, form, success_url=None):
+    logger.debug("signup_form")
     dajax = Dajax()
     #dajax.alert("Hello World!")
     #dajax.add_css_class('div .alert', 'red')
@@ -56,11 +67,16 @@ def sigup_form_test(request, form, success_url=None):
     else:
         dajax.remove_css_class('#sigup_form div', 'error')
         dajax.clear('#sigup_form .help-inline', 'innerHTML')
-        if form.non_field_errors:
-            dajax.clear('#sigup_form .alert-error', 'innerHTML')
-            dajax.remove_css_class('#sigup_form .alert-error' 'hide')
-            dajax.assign('#sigup_form .alert-error', 'innerHTML',
-                "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.non_field_errors))
+        dajax.clear('#sigup_form .alert-error', 'innerHTML')
+        dajax.add_css_class('#sigup_form div.alert-error', 'hide')
+        try:
+            if form.errors['__all__'] is not None:
+                dajax.remove_css_class('#sigup_form div.alert-error', 'hide')
+                logger.debug(">>>>>>>>>>>> %s" % form.errors['__all__'])
+                dajax.assign('#sigup_form .alert-error', 'innerHTML',
+                "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.errors['__all__']))
+        except Exception, e:
+            pass
         for error in form.errors:
             dajax.add_css_class('#sigup_form #gr_id_%s' % error, 'error')
             #dajax.remove_css_class('#sigup_form #e_id_%s' % error, 'hide')
@@ -101,11 +117,14 @@ def signin_form_test(request, form, success_url=None):
     else:
         dajax.remove_css_class('#signin_form div', 'error')
         dajax.clear('#signin_form .help-inline', 'innerHTML')
-        if form.non_field_errors:
-            dajax.clear('#signin_form .alert-error', 'innerHTML')
-            dajax.remove_css_class('#signin_form .alert-error' 'hide')
-            dajax.assign('#signin_form .alert-error', 'innerHTML',
-                "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.non_field_errors))
+        dajax.add_css_class('#signin_form div.alert-error', 'hide')
+        try:
+            if form.errors['__all__'] is not None:
+                dajax.remove_css_class('#signin_form div.alert-error', 'hide')
+                dajax.assign('#signin_form .alert-error', 'innerHTML',
+                "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.errors['__all__']))
+        except Exception, e:
+            pass
         for error in form.errors:
             dajax.add_css_class('#signin_form #gr_id_%s' % error, 'error')
             #dajax.remove_css_class('#signin_form #e_id_%s' % error, 'hide')
