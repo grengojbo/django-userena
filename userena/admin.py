@@ -15,7 +15,7 @@ class UserenaAdmin(UserAdmin, GuardedModelAdmin):
     inlines = [UserenaSignupInline, ]
     list_display = ('username', 'email', 'first_name', 'last_name',
                     'is_staff', 'is_active', 'date_joined')
-    list_filter = ('is_staff', 'is_superuser', 'is_active',)
+    list_filter = ('is_staff', 'is_superuser', 'is_active')
 
 admin.site.unregister(User)
 admin.site.register(User, UserenaAdmin)
