@@ -1,0 +1,14 @@
+{% load i18n widget_tweaks %}
+
+{% block content %}
+    <form action="" method="post" class="form-horizontal" id="signin_form" accept-charset="utf-8">{% csrf_token %}
+        
+      <div class="alert {% if form.non_field_errors %}alert-error{% else %}alert-error hide{% endif %}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+            </div>
+        {% include "base/field_user.html" with field=form.identification %}
+        {% include "base/field_password.html" with field=form.password %}
+        <label for="id_{{ form.field.name }}">{{ form.field }} {{ form.field.label }}</label>
+    </form>
+{% endblock %}

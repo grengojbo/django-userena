@@ -1,3 +1,4 @@
+# -*- mode: python; coding: utf-8; -*-
 #import simplejson
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
@@ -61,5 +62,29 @@ def sigup_form_test(request, form, success_url=None):
 @dajaxice_register(method='POST', name='signin_form')
 def signin_form_test(request, form, success_url=None):
     dajax = Dajax()
+    form = AuthenticationForm(deserialize_form(form))
+    if form.is_valid():
+      identification, password, remember_me = (form.cleaned_data['identification'],
+                                                     form.cleaned_data['password'],
+                                                     form.cleaned_data['remember_me'])
+      user = authenticate(identification=identification, password=password)
+      if user.is_active:
+        login(request, user)
+                if remember_me:
+                    request.session.set_expiry(userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
+                else: request.session.set_expiry(0)
+
+                if userena_settings.USERENA_USE_MESSAGES:
+                    messages.success(request, _('You have been signed in.'),
+                                     fail_silently=True)
+
+                # Whereto now?
+                redirect_to = redirect_signin_function(
+                    request.REQUEST.get(redirect_field_name), user)
+                return redirect(redirect_to)
+            else:
+                return redirect(reverse('userena_disabled',
+                                        kwargs={'username': user.username}))
+
     return HttpResponse(dajax.json(), mimetype="application/json")
 
