@@ -17,6 +17,10 @@ from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 #@secure_required
 #@csrf_exempt
 
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
 #@dajaxice_register(method='GET')
 #@ensure_csrf_cookie
 @dajaxice_register(method='POST', name='sigup_form')
@@ -61,30 +65,44 @@ def sigup_form_test(request, form, success_url=None):
 
 @dajaxice_register(method='POST', name='signin_form')
 def signin_form_test(request, form, success_url=None):
+    logger.debug("signin_form")
     dajax = Dajax()
     form = AuthenticationForm(deserialize_form(form))
     if form.is_valid():
-      identification, password, remember_me = (form.cleaned_data['identification'],
-                                                     form.cleaned_data['password'],
-                                                     form.cleaned_data['remember_me'])
-      user = authenticate(identification=identification, password=password)
-      if user.is_active:
-        login(request, user)
-                if remember_me:
-                    request.session.set_expiry(userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
-                else: request.session.set_expiry(0)
+        identification, password, remember_me = (form.cleaned_data['identification'],
+                                                 form.cleaned_data['password'],
+                                                 form.cleaned_data['remember_me'])
+        user = authenticate(identification=identification, password=password)
+        if user.is_active:
+            login(request, user)
+            if remember_me:
+                request.session.set_expiry(userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
+            else: request.session.set_expiry(0)
 
-                if userena_settings.USERENA_USE_MESSAGES:
-                    messages.success(request, _('You have been signed in.'),
-                                     fail_silently=True)
+            # TODO: добавить сообщения
+            #if userena_settings.USERENA_USE_MESSAGES:
+            #    messages.success(request, _('You have been signed in.'), fail_silently=True)
 
-                # Whereto now?
-                redirect_to = redirect_signin_function(
-                    request.REQUEST.get(redirect_field_name), user)
-                return redirect(redirect_to)
-            else:
-                return redirect(reverse('userena_disabled',
-                                        kwargs={'username': user.username}))
+            # Whereto now?
+            #redirect_to = redirect_signin_function(request.REQUEST.get(redirect_field_name), user)
+            redirect_to = reverse('userena_disabled', kwargs={'username': user.username})
+        else:
+            redirect_to = reverse('userena_disabled', kwargs={'username': user.username})
+
+        dajax.remove_css_class('#signin_form div', 'error')
+        dajax.clear('#signin_form .help-inline', 'innerHTML')
+        dajax.redirect(redirect_to, delay=10)
+    else:
+        dajax.remove_css_class('#signin_form div', 'error')
+        dajax.clear('#signin_form .help-inline', 'innerHTML')
+        if form.non_field_errors:
+            dajax.clear('#signin_form .alert-error', 'innerHTML')
+            dajax.remove_css_class('#sigup_form .alert-error' 'hide')
+            dajax.assign('#sigup_form .alert-error', 'innerHTML', "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.non_field_errors))
+        for error in form.errors:
+            dajax.add_css_class('#signin_form #gr_id_%s' % error, 'error')
+            #dajax.remove_css_class('#signin_form #e_id_%s' % error, 'hide')
+            dajax.assign('#signin_form #e_id_%s' % error, 'innerHTML', form.errors[error][0])
 
     return HttpResponse(dajax.json(), mimetype="application/json")
 

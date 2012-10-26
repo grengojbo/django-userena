@@ -1,3 +1,4 @@
+# -*- mode: python; coding: utf-8; -*-
 from django.core.validators import email_re
 from django.contrib.auth.backends import ModelBackend
 

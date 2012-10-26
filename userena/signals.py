@@ -1,3 +1,4 @@
+# -*- mode: python; coding: utf-8; -*-
 from django.dispatch import Signal
 
 signup_complete = Signal(providing_args=["user",])

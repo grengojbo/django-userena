@@ -1,3 +1,4 @@
+# -*- mode: python; coding: utf-8; -*-
 from django.conf import settings
 from django.utils.hashcompat import sha_constructor
 from django.contrib.auth.models import SiteProfileNotAvailable
