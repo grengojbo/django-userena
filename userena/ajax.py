@@ -56,12 +56,18 @@ def sigup_form_test(request, form, success_url=None):
     else:
         dajax.remove_css_class('#sigup_form div', 'error')
         dajax.clear('#sigup_form .help-inline', 'innerHTML')
+        if form.non_field_errors:
+            dajax.clear('#sigup_form .alert-error', 'innerHTML')
+            dajax.remove_css_class('#sigup_form .alert-error' 'hide')
+            dajax.assign('#sigup_form .alert-error', 'innerHTML',
+                "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.non_field_errors))
         for error in form.errors:
             dajax.add_css_class('#sigup_form #gr_id_%s' % error, 'error')
             #dajax.remove_css_class('#sigup_form #e_id_%s' % error, 'hide')
             dajax.assign('#sigup_form #e_id_%s' % error, 'innerHTML', form.errors[error][0])
 
     return HttpResponse(dajax.json(), mimetype="application/json")
+
 
 @dajaxice_register(method='POST', name='signin_form')
 def signin_form_test(request, form, success_url=None):
@@ -97,8 +103,9 @@ def signin_form_test(request, form, success_url=None):
         dajax.clear('#signin_form .help-inline', 'innerHTML')
         if form.non_field_errors:
             dajax.clear('#signin_form .alert-error', 'innerHTML')
-            dajax.remove_css_class('#sigup_form .alert-error' 'hide')
-            dajax.assign('#sigup_form .alert-error', 'innerHTML', "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.non_field_errors))
+            dajax.remove_css_class('#signin_form .alert-error' 'hide')
+            dajax.assign('#signin_form .alert-error', 'innerHTML',
+                "<button type='button' class='close' data-dismiss='alert'>×</button>{0}".format(form.non_field_errors))
         for error in form.errors:
             dajax.add_css_class('#signin_form #gr_id_%s' % error, 'error')
             #dajax.remove_css_class('#signin_form #e_id_%s' % error, 'hide')
