@@ -102,12 +102,16 @@ def signin_form_test(request, form, success_url=None):
 
             # TODO: добавить сообщения
             if userena_settings.USERENA_USE_MESSAGES:
+                logger.debug(u"Message: {0}".format(_('You have been signed in.')))
                 messages.success(request, _('You have been signed in.'), fail_silently=True)
 
             # TODO: изменить переадресацию после регистрации
-            redirect_to = signin_redirect(REDIRECT_FIELD_NAME, user)
+            #redirect_to = signin_redirect(REDIRECT_FIELD_NAME, user)
+            redirect_to = reverse('userena_profile_detail', kwargs={'username': user.username})
+            logger.debug("Redirect: {0}".format(redirect_to))
         else:
             redirect_to = reverse('userena_disabled', kwargs={'username': user.username})
+            logger.debug("Redirect: {0}".format(redirect_to))
 
         dajax.remove_css_class('#signin_form div', 'error')
         dajax.clear('#signin_form .help-inline', 'innerHTML')
