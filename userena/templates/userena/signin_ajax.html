@@ -7,6 +7,6 @@
         </div>
         {% include "base/field_user.html" with field=form.identification %}
         {% include "base/field_password.html" with field=form.password %}
-        <label for="id_{{ form.field.name }}">{{ form.field }} {{ form.field.label }}</label>
+        {% include "base/field.html" with field=form.remember_me %}
     </form>
 {% endblock %}
