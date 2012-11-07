@@ -1,13 +1,25 @@
-{% extends 'userena/base_userena.html' %}
+{% extends 'layout.html' %}
 {% load i18n %}
 {% load url from future %}
-
 {% block title %}{% trans "Account setup" %}{% endblock %}
-
 {% block content_title %}<h2>{% blocktrans with profile.user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
-
 {% block content %}
-
+<div class="tabbable tabs-left">
+    {% block profile_navigation %}
+              {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
+              {% if user.username == profile.user.username %}
+                  <ul class="nav nav-tabs">
+                  {% block profile_navigation_items %}
+                      <li class="active"><a href="{% url 'userena_profile_detail' user.username %}"  data-toggle="tab">{% trans "View profile" %}</a></li>
+                    <li><a href="{% url 'userena_profile_edit' user.username %}" data-toggle="tab">{% trans "Edit details" %}</a></li>
+                    <li><a href="{% url 'userena_password_change' user.username %}" data-toggle="tab">{% trans "Change password" %}</a></li>
+                    <li><a href="{% url 'userena_email_change' user.username %}" data-toggle="tab">{% trans "Change email" %}</a></li>
+                  {% endblock %}
+                </ul>
+              {% endif %}
+            {% endblock %}
+    <div class="tab-content  active">
+            <div class="tab-pane active" id="tab1">
 <form action="" enctype="multipart/form-data" method="post">
   <ul id="box-nav">
     <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'View profile' %}</span></a></li>
@@ -22,4 +34,6 @@
   </fieldset>
   <input type="submit" value="{% trans "Save changes" %}" />
 </form>
+            </div></div>
+    </div>
 {% endblock %}

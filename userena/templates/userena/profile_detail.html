@@ -23,7 +23,8 @@
     </div>
 {% endblock %}
 {% block content %}
-     <div id="details">
+    <div class="row">
+     <div id="details" >
       {% block profile_details %}
         <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
         <dl>
@@ -55,5 +56,6 @@
           {% endblock %}
         </dl>
       {% endblock %}
+    </div>
     </div>
 {% endblock %}
