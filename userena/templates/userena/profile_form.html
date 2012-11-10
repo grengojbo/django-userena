@@ -10,7 +10,7 @@
                     <fieldset>
                         <legend>{% trans "Edit Profile" %}</legend>
                         {% for field in form.visible_fields %}
-                            {% include "field.html" with field=field|add_class:"input-xxlarge" %}
+                            {% include "userena/field.html" with field=field|add_class:"input-xxlarge" %}
                         {% endfor %}
                         {% for field in form.hidden_fields %}{{ field }}{% endfor %}
                     </fieldset>
