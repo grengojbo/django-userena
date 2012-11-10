@@ -1,0 +1,9 @@
+{% load i18n %}
+{% load widget_tweaks %}
+<div class="control-group{% if field.errors %} error{% endif %}" id="gr_{{ field.auto_id}}">
+  <label class="control-label{% if field.field.required %} required{% endif %}" for="{{ field.auto_id}}">{{ field.label_tag }}</label>
+  <div class="controls">
+    <div class="input-prepend">{{ field }}</div>{% if field.errors %}<span class="help-inline" id="e_{{ field.auto_id}}">{{ field.errors }}</span>{% endif %}
+      {% if field.help_text %}<span class="help-block" id="h_{{ field.auto_id}}">{{ field.help_text }}</span>{% endif %}
+  </div>
+</div>

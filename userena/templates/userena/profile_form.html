@@ -1,5 +1,5 @@
-{% extends 'layout.html' %}
-{% load i18n %}
+{% extends 'userena/base_userena.html' %}
+{% load i18n widget_tweaks %}
 {% load url from future %}
 {% block title %}{% trans "Account setup" %}{% endblock %}
 {% block content %}
@@ -9,10 +9,13 @@
                 <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
                     <fieldset>
                         <legend>{% trans "Edit Profile" %}</legend>
-                        {{ form.as_p }}
+                        {% for field in form.visible_fields %}
+                            {% include "field.html" with field=field|add_class:"input-xxlarge" %}
+                        {% endfor %}
+                        {% for field in form.hidden_fields %}{{ field }}{% endfor %}
                     </fieldset>
                     <div class="form-actions">
-                        <button type="submit" class="btn primary">{% trans "Save changes" %}</button>
+                        <button type="submit" class="btn btn-primary">{% trans "Save changes" %}</button>
                     </div>
                 </form>
             </div>
