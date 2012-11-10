@@ -1,39 +1,38 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 {% load url from future %}
-{% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.
+{% endblocktrans %}{% endblock %}
+{% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 {% block profile_content %}
-        <div class="tab-content  active">
-            <div class="tab-pane active" id="tab1">
-                <h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
-                <div id="details">
-                    {% block profile_details %}
-                        <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}"/>
-                        {% block profile_definition_list %}
-                                <p>{% trans "Name" %}: {% if profile.user.get_full_name %}{{ profile.user.get_full_name }}{% endif %}</p>
-                                <p>{% trans "Email" %}: {% if profile.user.email and not hide_email %}{{ profile.user.email }}{% endif %}</p>
-                                <dl>
-                                {% if profile.age %}
-                                    <dt>{% trans "Age" %}</dt>
-                                    <dd>{{ profile.age }}</dd>
-                                {% endif %}
-                                {% if profile.website %}
-                                    <dt>{% trans "Website" %}</dt>
-                                    <dd>{{ profile.website|urlize }}</dd>
-                                {% endif %}
-                                {% if profile.location %}
-                                    <dt>{% trans "Location" %}</dt>
-                                    <dd>{{ profile.location }}</dd>
-                                {% endif %}
-                                {% if profile.about_me %}
-                                    <dt>{% trans "About me" %}</dt>
-                                    <dd>{{ profile.about_me }}</dd>
-                                {% endif %}
-                                </dl>
-                            {% endblock %}
+    <div id="details">
+        {% block profile_details %}
+            <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}"/>
+            {% block profile_definition_list %}
+                <p>{% trans "Name" %}:
+                    {% if profile.user.get_full_name %}{{ profile.user.get_full_name }}{% endif %}</p>
+                <p>{% trans "Email" %}:
+                    {% if profile.user.email and not hide_email %}{{ profile.user.email }}{% endif %}</p>
+                <dl>
+                    {% if profile.age %}
+                        <dt>{% trans "Age" %}</dt>
+                        <dd>{{ profile.age }}</dd>
+                    {% endif %}
+                    {% if profile.website %}
+                        <dt>{% trans "Website" %}</dt>
+                        <dd>{{ profile.website|urlize }}</dd>
+                    {% endif %}
+                    {% if profile.location %}
+                        <dt>{% trans "Location" %}</dt>
+                        <dd>{{ profile.location }}</dd>
+                    {% endif %}
+                    {% if profile.about_me %}
+                        <dt>{% trans "About me" %}</dt>
+                        <dd>{{ profile.about_me }}</dd>
+                    {% endif %}
+                </dl>
+            {% endblock %}
 
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
+        {% endblock %}
+    </div>
 {% endblock %}

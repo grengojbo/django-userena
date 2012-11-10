@@ -3,31 +3,19 @@
 {% load url from future %}
 {% block title %}{% trans "Account setup" %}{% endblock %}
 {% block content %}
-<div class="tabbable tabs-left">
-    {% block profile_navigation %}
-              {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-              {% if user.username == profile.user.username %}
-                  <ul class="nav nav-tabs">
-                  {% block profile_navigation_items %}
-                      <li><a href="{% url 'userena_profile_detail' user.username %}">{% trans "View profile" %}</a></li>
-                    <li class="active"><a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit details" %}</a></li>
-                    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a></li>
-                    <li><a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a></li>
-                  {% endblock %}
-                </ul>
-              {% endif %}
-            {% endblock %}
-    <div class="tab-content  active">
+    <div class="tabbable tabs-left">
+        <div class="tab-content  active">
             <div class="tab-pane active" id="tab1">
-<form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Edit Profile" %}</legend>
-    {{ form.as_p }}
-  </fieldset>
-    <div class="form-actions">
-    <button type="submit" class="btn primary">{% trans "Save changes" %}</button>
+                <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+                    <fieldset>
+                        <legend>{% trans "Edit Profile" %}</legend>
+                        {{ form.as_p }}
+                    </fieldset>
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary">{% trans "Save changes" %}</button>
+                    </div>
+                </form>
+            </div>
         </div>
-</form>
-            </div></div>
     </div>
 {% endblock %}
