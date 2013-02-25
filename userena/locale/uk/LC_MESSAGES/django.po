@@ -1,5 +1,6 @@
 # 
 # Translators:
+# Jack <Wasd2007@meta.ua>, 2013.
 #  <oleg.dolya@gmail.com>, 2013.
 #  <shtapnyak@gmail.com>, 2013.
 msgid ""
@@ -7,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-userena\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-19 21:38+0200\n"
-"PO-Revision-Date: 2013-02-22 20:00+0000\n"
+"PO-Revision-Date: 2013-02-25 10:04+0000\n"
 "Last-Translator: jbo <oleg.dolya@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/django-userena/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -426,13 +427,13 @@ msgstr "Ви можете спробувати змінити його в нал
 #: templates/userena/profile_form.html:6
 #, python-format
 msgid "Account &raquo; %(username)s"
-msgstr "Учётная запись &raquo; %(username)s"
+msgstr "Обліковий запис &raquo; %(username)s"
 
 #: templates/userena/email_form.html:9 templates/userena/password_form.html:11
 #: templates/userena/profile_detail.html:14
 #: templates/userena/profile_form.html:12
 msgid "View profile"
-msgstr "Смотреть профиль"
+msgstr "Дивитися профіль"
 
 #: templates/userena/email_form.html:10
 #: templates/userena/password_form.html:12
@@ -485,15 +486,15 @@ msgstr "Ваш пароль был сброшен"
 
 #: templates/userena/password_reset_complete.html:7
 msgid "You can now "
-msgstr ""
+msgstr "Тепер ви можете"
 
 #: templates/userena/password_reset_complete.html:7
 msgid "signin"
-msgstr ""
+msgstr "реєстр"
 
 #: templates/userena/password_reset_complete.html:7
 msgid "with your new password."
-msgstr ""
+msgstr "з новим паролем."
 
 #: templates/userena/password_reset_confirm_form.html:4
 #: templates/userena/password_reset_confirm_form.html:13
@@ -509,12 +510,12 @@ msgstr "Сброс пароля"
 #: templates/userena/password_reset_done.html:4
 #: templates/userena/password_reset_done.html:5
 msgid "Reset password email is send"
-msgstr ""
+msgstr "Неправельно вказанний E-Mail, або пароль"
 
 #: templates/userena/password_reset_done.html:8
 msgid ""
 "An e-mail has been send to you which explains how to reset your password."
-msgstr ""
+msgstr "Вам було надіслано лист з інструкціею, як скинути пароль."
 
 #: templates/userena/password_reset_form.html:13
 msgid "Send password"
