@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-userena\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-09-19 21:38+0200\n"
-"PO-Revision-Date: 2013-02-25 10:04+0000\n"
+"PO-Revision-Date: 2013-02-25 11:38+0000\n"
 "Last-Translator: jbo <oleg.dolya@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/django-userena/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -439,7 +439,7 @@ msgstr "Дивитися профіль"
 #: templates/userena/password_form.html:12
 #: templates/userena/profile_form.html:13
 msgid "Edit profile"
-msgstr "Редактировать профиль"
+msgstr "Редагувати профіль"
 
 #: templates/userena/email_form.html:11 templates/userena/password_form.html:4
 #: templates/userena/password_form.html:13
@@ -447,42 +447,42 @@ msgstr "Редактировать профиль"
 #: templates/userena/profile_detail.html:16
 #: templates/userena/profile_form.html:14
 msgid "Change password"
-msgstr "Сменить пароль"
+msgstr "Змінити пароль"
 
 #: templates/userena/email_form.html:12 templates/userena/email_form.html:19
 #: templates/userena/password_form.html:14
 #: templates/userena/profile_detail.html:17
 #: templates/userena/profile_form.html:15
 msgid "Change email"
-msgstr "Сменить email"
+msgstr "Змінити email"
 
 #: templates/userena/email_form.html:16
 msgid "Change email address"
-msgstr "Сменить email адрес"
+msgstr "Адреса E-Mail"
 
 #: templates/userena/password_complete.html:4
 msgid "Password changed"
-msgstr "Пароль изменён"
+msgstr "Пароль змінено"
 
 #: templates/userena/password_complete.html:5
 msgid "Your password has been changed"
-msgstr "Ваш пароль был изменён"
+msgstr "Ваш пароль був змінений"
 
 #: templates/userena/password_complete.html:8
 msgid "From now on you can use your new password to signin"
-msgstr "С этого момента вы можете использовать свой новый пароль чтобы войти"
+msgstr "Тепер ви можете використовувати ваш новий пароль для входу"
 
 #: templates/userena/password_form.html:17
 msgid "Change Password"
-msgstr "Сменить пароль"
+msgstr "Змінити пароль"
 
 #: templates/userena/password_reset_complete.html:4
 msgid "Password reset"
-msgstr "Сброс пароля"
+msgstr "Скидання пароля"
 
 #: templates/userena/password_reset_complete.html:5
 msgid "Your password has been reset"
-msgstr "Ваш пароль был сброшен"
+msgstr "Ваш пароль був скинутий"
 
 #: templates/userena/password_reset_complete.html:7
 msgid "You can now "
@@ -500,12 +500,12 @@ msgstr "з новим паролем."
 #: templates/userena/password_reset_confirm_form.html:13
 #: templates/userena/password_reset_form.html:4
 msgid "Reset password"
-msgstr "Сброс пароля"
+msgstr "Скидання пароля"
 
 #: templates/userena/password_reset_confirm_form.html:9
 #: templates/userena/password_reset_form.html:9
 msgid "Reset Password"
-msgstr "Сброс пароля"
+msgstr "Скидання пароля"
 
 #: templates/userena/password_reset_done.html:4
 #: templates/userena/password_reset_done.html:5
@@ -519,28 +519,28 @@ msgstr "Вам було надіслано лист з інструкціею, �
 
 #: templates/userena/password_reset_form.html:13
 msgid "Send password"
-msgstr "Отправить пароль"
+msgstr "Надіслати пароль"
 
 #: templates/userena/profile_detail.html:4
 #, python-format
 msgid "%(username)s's profile."
-msgstr "%(username)s: профиль."
+msgstr "%(username)s: профіль."
 
 #: templates/userena/profile_detail.html:15
 msgid "Edit details"
-msgstr "Редактировать профиль"
+msgstr "Детальне редагування"
 
 #: templates/userena/profile_detail.html:22
 msgid "Your mugshot"
-msgstr "Ваше фото"
+msgstr "Ваше зображення профілю"
 
 #: templates/userena/profile_detail.html:24
 msgid "Name"
-msgstr "Имя"
+msgstr "Ім'я"
 
 #: templates/userena/profile_detail.html:30
 msgid "Age"
-msgstr "Возраст"
+msgstr "Вік"
 
 #: templates/userena/profile_detail.html:33
 msgid "Website"
@@ -548,31 +548,31 @@ msgstr "Web-сайт"
 
 #: templates/userena/profile_detail.html:36
 msgid "Location"
-msgstr "Местоположение"
+msgstr "Місце"
 
 #: templates/userena/profile_detail.html:39
 msgid "About me"
-msgstr "Обо мне"
+msgstr "Про себе"
 
 #: templates/userena/profile_form.html:4
 msgid "Account setup"
-msgstr "Настройки учетной записи"
+msgstr "Налаштування облікового запису"
 
 #: templates/userena/profile_form.html:19
 msgid "Edit Profile"
-msgstr "Редактировать профиль"
+msgstr "Змінити профіль"
 
 #: templates/userena/profile_form.html:22
 msgid "Save changes"
-msgstr "Сохранить изменения"
+msgstr "Зберегти зміни"
 
 #: templates/userena/profile_list.html:4
 msgid "Profiles"
-msgstr "Профили"
+msgstr "Профілі"
 
 #: templates/userena/profile_list.html:21
 msgid "previous"
-msgstr "предыдущий"
+msgstr "Попередній"
 
 #: templates/userena/profile_list.html:25
 #, python-format
@@ -580,82 +580,82 @@ msgid ""
 "\n"
 "      Page %(page)s of %(num_pages)s\n"
 "      "
-msgstr "\n      Страница %(page)s из %(num_pages)s\n      "
+msgstr "\n      Сторінка %(page)s з %(num_pages)s\n      "
 
 #: templates/userena/profile_list.html:31
 msgid "next"
-msgstr "следующая"
+msgstr "Наступна"
 
 #: templates/userena/signin_form.html:4 templates/userena/signin_form.html:10
 #: templates/userena/signin_form.html:28
 msgid "Signin"
-msgstr "Войти"
+msgstr "Реєстр"
 
 #: templates/userena/signin_form.html:29
 msgid "Forgot your password?"
-msgstr "Забыли свой пароль?"
+msgstr "Забули пароль?"
 
 #: templates/userena/signout.html:4
 msgid "Signed out"
-msgstr "Вышли"
+msgstr "Вийшов"
 
 #: templates/userena/signout.html:5
 msgid "You have been signed out"
-msgstr "Вы вышли"
+msgstr "Ви вийшли з"
 
 #: templates/userena/signout.html:8
 msgid "You have been signed out. Till we meet again."
-msgstr "Вы вышли. До встречи!"
+msgstr "Ви вийшли з системи. До зустрічі."
 
 #: templates/userena/signup_complete.html:4
 msgid "Signup almost done!"
-msgstr "Регистрация почти завершена!"
+msgstr "Реєстрація майже закінчена!"
 
 #: templates/userena/signup_complete.html:6
 #: templates/userena/signup_form.html:4 templates/userena/signup_form.html:27
 msgid "Signup"
-msgstr "Регистрация"
+msgstr "Реєстрація"
 
 #: templates/userena/signup_complete.html:9
 msgid "Thank you for signing up with us!"
-msgstr "Спасибо, что зарегистрировались у нас!"
+msgstr "Спасибі, що ви зареєструвалися у нас!"
 
 #: templates/userena/signup_complete.html:12
 msgid ""
 "You have been sent an e-mail with an activation link to the supplied email."
-msgstr "Email сообщение с инструкциями об активации отправлено на указанный адрес."
+msgstr "Лист з інструкціями що до активації відправлено на ваш E-Mail."
 
 #: templates/userena/signup_complete.html:13
 #, python-format
 msgid ""
 "We will store your signup information for %(userena_activation_days)s days "
 "on our server. "
-msgstr "Мы будем хранить регистрационную информация на нашем сервере в течение %(userena_activation_days)s дней."
+msgstr "Ваші реєстраційні дані будуть зберігатися протягом %(userena_activation_days)s днів."
 
 #: templates/userena/signup_complete.html:15
 msgid "You can now use the supplied credentials to signin."
-msgstr "Вы можете использовать указанные данные чтобы войти."
+msgstr "Тепер ви можете увійти в систему з обліковими даними."
 
 #: tests/profile.py:6 tests/profiles/models.py:12
 msgid "Male"
-msgstr "Мужской"
+msgstr "Чоловічий"
 
 #: tests/profile.py:7 tests/profiles/models.py:13
 msgid "Female"
-msgstr "Женский"
+msgstr "Жіночий"
 
 #: tests/profile.py:9 tests/profiles/models.py:21
 msgid "gender"
-msgstr "пол"
+msgstr "Стать"
 
 #: tests/profile.py:13 tests/profiles/models.py:25
 msgid "website"
-msgstr "web-сайт"
+msgstr "Сайт"
 
 #: tests/profile.py:14 tests/profiles/models.py:26
 msgid "location"
-msgstr "местоположение"
+msgstr "Місце"
 
 #: tests/profile.py:15 tests/profiles/models.py:27
 msgid "about me"
-msgstr "обо мне"
+msgstr "Про себе"
