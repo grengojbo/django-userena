@@ -3,7 +3,7 @@ from django.utils import translation
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.contrib.auth.models import SiteProfileNotAvailable
-
+from django.conf import settings
 from userena import settings as userena_settings
 
 class UserenaLocaleMiddleware(object):
@@ -29,6 +29,12 @@ class UserenaLocaleMiddleware(object):
                         translation.activate(lang)
                         request.LANGUAGE_CODE = translation.get_language()
                     except AttributeError: pass
+            else:
+                try:
+                    lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'uk')
+                    translation.activate(lang)
+                    request.LANGUAGE_CODE = translation.get_language()
+                except AttributeError: pass
 
 class CsrfFixMiddleware:
     def process_view(self, request, view_func, callback_args, callback_kwargs):
