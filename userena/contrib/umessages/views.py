@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import list_detail
 from django.views.decorators.http import require_http_methods
 from django.core.urlresolvers import reverse
-from django.views.generic.simple import direct_to_template
+from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404
 from django.contrib.auth.models import User
@@ -124,7 +124,7 @@ def message_detail(request, username, page=1, paginate_by=10,
 
 @login_required
 def message_compose(request, recipients=None, compose_form=ComposeForm,
-                    success_url=None, template_name="umessages/message_form.html",
+                    success_url=None, template="umessages/message_form.html",
                     recipient_filter=None, extra_context=None):
     """
     Compose a new message
@@ -193,9 +193,7 @@ def message_compose(request, recipients=None, compose_form=ComposeForm,
     if not extra_context: extra_context = dict()
     extra_context["form"] = form
     extra_context["recipients"] = recipients
-    return direct_to_template(request,
-                              template_name,
-                              extra_context=extra_context)
+    return render(request, template, extra_context=extra_context)
 
 @login_required
 @require_http_methods(["POST"])
