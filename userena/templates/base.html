@@ -10,11 +10,14 @@
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
   <div id="body">
     {% block body %}
-      <div class="content_title">
+      <div class="span12 content_title">
         {% block content_title %}{% endblock %}
       </div>
-      <div class="content">
+      <div class="row">
+      <div class="span9 content">
         {% block content %}{% endblock %}
+      </div>
+      <div class="span3">{% block sidebar %}{% endblock sidebar %}</div>
       </div>
     {% endblock %}
   </div>
