@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, AnonymousUser
+from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import Site
 from django.core import mail
 from django.conf import settings
@@ -7,8 +7,11 @@ from userena.models import UserenaSignup, upload_to_mugshot
 from userena import settings as userena_settings
 from userena.tests.profiles.test import ProfileTestCase
 from userena.tests.profiles.models import Profile
+from userena.utils import get_user_model
 
 import datetime, hashlib, re
+
+User = get_user_model()
 
 MUGSHOT_RE = re.compile('^[a-f0-9]{40}$')
 
@@ -29,7 +32,7 @@ class UserenaSignupModelTests(ProfileTestCase):
         """
         user = User.objects.get(pk=1)
         filename = 'my_avatar.png'
-        path = upload_to_mugshot(user, filename)
+        path = upload_to_mugshot(user.get_profile(), filename)
 
         # Path should be changed from the original
         self.failIfEqual(filename, path)

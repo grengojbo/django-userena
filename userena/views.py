@@ -4,7 +4,6 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth.views import logout as Signout
 from django.views.generic import TemplateView
 from django.template.context import RequestContext
@@ -12,14 +11,14 @@ from django.views.generic.list import ListView
 from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import ugettext as _
-from django.http import HttpResponseForbidden, Http404
+from django.http import HttpResponseForbidden, Http404, HttpResponseRedirect
 
 from userena.forms import (SignupForm, SignupFormOnlyEmail, AuthenticationForm,
                            ChangeEmailForm, EditProfileForm)
 from userena.models import UserenaSignup
 from userena.decorators import secure_required
 from userena.backends import UserenaAuthenticationBackend
-from userena.utils import signin_redirect, get_profile_model
+from userena.utils import signin_redirect, get_profile_model, get_user_model
 from userena import signals as userena_signals
 from userena import settings as userena_settings
 
@@ -48,7 +47,7 @@ class ProfileListView(ListView):
     context_object_name='profile_list'
     page=1
     paginate_by=50
-    template_name='userena/profile_list.html'
+    template_name=userena_settings.USERENA_PROFILE_LIST_TEMPLATE
     extra_context=None
 
     def get_context_data(self, **kwargs):
@@ -136,6 +135,12 @@ def signup(request, signup_form=SignupForm,
             # A new signed user should logout the old one.
             if request.user.is_authenticated():
                 logout(request)
+
+            if (userena_settings.USERENA_SIGNIN_AFTER_SIGNUP and
+                not userena_settings.USERENA_ACTIVATION_REQUIRED):
+                user = authenticate(identification=user.email, check_password=False)
+                login(request, user)
+
             return redirect(redirect_to)
 
     if not extra_context: extra_context = dict()
@@ -274,7 +279,7 @@ def direct_to_user_template(request, username, template_name,
         The currently :class:`User` that is viewed.
 
     """
-    user = get_object_or_404(User, username__iexact=username)
+    user = get_object_or_404(get_user_model(), username__iexact=username)
 
     if not extra_context: extra_context = dict()
     extra_context['viewed_user'] = user
@@ -349,7 +354,7 @@ def signin(request, auth_form=AuthenticationForm,
                 # Whereto now?
                 redirect_to = redirect_signin_function(
                     request.REQUEST.get(redirect_field_name), user)
-                return redirect(redirect_to)
+                return HttpResponseRedirect(redirect_to)
             else:
                 return redirect(reverse('userena_disabled',
                                         kwargs={'username': user.username}))
@@ -383,7 +388,7 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
     return Signout(request, next_page, template_name, *args, **kwargs)
 
 @secure_required
-@permission_required_or_403('change_user', (User, 'username', 'username'))
+@permission_required_or_403('change_user', (get_user_model(), 'username', 'username'))
 def email_change(request, username, email_form=ChangeEmailForm,
                  template_name='userena/email_form.html', success_url=None,
                  extra_context=None):
@@ -426,7 +431,7 @@ def email_change(request, username, email_form=ChangeEmailForm,
     permissions to alter the email address of others.
 
     """
-    user = get_object_or_404(User, username__iexact=username)
+    user = get_object_or_404(get_user_model(), username__iexact=username)
 
     form = email_form(user)
 
@@ -450,7 +455,7 @@ def email_change(request, username, email_form=ChangeEmailForm,
                                             extra_context=extra_context)(request)
 
 @secure_required
-@permission_required_or_403('change_user', (User, 'username', 'username'))
+@permission_required_or_403('change_user', (get_user_model(), 'username', 'username'))
 def password_change(request, username, template_name='userena/password_form.html',
                     pass_form=PasswordChangeForm, success_url=None, extra_context=None):
     """ Change password of user.
@@ -489,7 +494,7 @@ def password_change(request, username, template_name='userena/password_form.html
         Form used to change the password.
 
     """
-    user = get_object_or_404(User,
+    user = get_object_or_404(get_user_model(),
                              username__iexact=username)
 
     form = pass_form(user=user)
@@ -559,7 +564,7 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
         Instance of the ``Profile`` that is edited.
 
     """
-    user = get_object_or_404(User,
+    user = get_object_or_404(get_user_model(),
                              username__iexact=username)
 
     profile = user.get_profile()
@@ -587,9 +592,11 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
     if not extra_context: extra_context = dict()
     extra_context['form'] = form
     extra_context['profile'] = profile
-    return ExtraContextTemplateView.as_view(template_name=template_name, extra_context=extra_context)(request)
-
-def profile_detail(request, username, template_name=userena_settings.USERENA_PROFILE_DETAIL_TEMPLATE, extra_context=None, **kwargs):
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                            extra_context=extra_context)(request)
+def profile_detail(request, username,
+    template_name=userena_settings.USERENA_PROFILE_DETAIL_TEMPLATE,
+    extra_context=None, **kwargs):
     """
     Detailed view of an user.
 
@@ -610,16 +617,15 @@ def profile_detail(request, username, template_name=userena_settings.USERENA_PRO
         Instance of the currently viewed ``Profile``.
 
     """
-    user = get_object_or_404(User,
+    user = get_object_or_404(get_user_model(),
                              username__iexact=username)
 
     profile_model = get_profile_model()
     try:
         profile = user.get_profile()
     except profile_model.DoesNotExist:
-        #profile = profile_model.create(user=user)
-        profile = profile_model(user=user)
-        profile.save()
+        profile = profile_model.objects.create(user=user)
+
     if not profile.can_view_profile(request.user):
         return HttpResponseForbidden(_("You don't have permission to view this profile."))
     if not extra_context: extra_context = dict()
@@ -684,11 +690,9 @@ def profile_list(request, page=1, template_name='userena/profile_list.html',
     queryset = profile_model.objects.get_visible_profiles(request.user)
 
     if not extra_context: extra_context = dict()
-    return list_detail.object_list(request,
-                                   queryset=queryset,
+    return ProfileListView.as_view(queryset=queryset,
                                    paginate_by=paginate_by,
                                    page=page,
                                    template_name=template_name,
                                    extra_context=extra_context,
-                                   template_object_name='profile',
-                                   **kwargs)
+                                   **kwargs)(request)

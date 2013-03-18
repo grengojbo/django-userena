@@ -1,13 +1,15 @@
 # -*- mode: python; coding: utf-8; -*-
 from django.db import models
 from django.db.models import Q
-from django.contrib.auth.models import User, UserManager, Permission, AnonymousUser
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import UserManager, Permission, AnonymousUser
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
 from userena import settings as userena_settings
-from userena.utils import generate_sha1, get_profile_model, get_datetime_now
+from userena.utils import generate_sha1, get_profile_model, get_datetime_now, \
+    get_user_model
 from userena import signals as userena_signals
 
 from guardian.shortcuts import assign, get_perms
@@ -44,7 +46,7 @@ class UserenaManager(UserManager):
             String containing the password for the new user.
 
         :param active:
-            Boolean that defines if the user requires activation by clicking 
+            Boolean that defines if the user requires activation by clicking
             on a link in an e-mail. Defaults to ``False``.
 
         :param send_email:
@@ -57,7 +59,8 @@ class UserenaManager(UserManager):
         """
         now = get_datetime_now()
 
-        new_user = User.objects.create_user(username, email, password)
+        new_user = get_user_model().objects.create_user(
+            username, email, password)
         new_user.is_active = active
         new_user.save()
 
@@ -81,7 +84,7 @@ class UserenaManager(UserManager):
 
         if send_email:
             userena_profile.send_activation_email()
- 
+
         return new_user
 
     def create_userena_profile(self, user):
@@ -181,8 +184,8 @@ class UserenaManager(UserManager):
 
         """
         deleted_users = []
-        for user in User.objects.filter(is_staff=False,
-                                        is_active=False):
+        for user in get_user_model().objects.filter(is_staff=False,
+                                                    is_active=False):
             if user.userena_signup.activation_key_expired():
                 deleted_users.append(user)
                 user.delete()
@@ -204,8 +207,10 @@ class UserenaManager(UserManager):
         for model, perms in ASSIGNED_PERMISSIONS.items():
             if model == 'profile':
                 model_obj = get_profile_model()
-            else: model_obj = User
+            else: model_obj = get_user_model()
+
             model_content_type = ContentType.objects.get_for_model(model_obj)
+
             for perm in perms:
                 try:
                     Permission.objects.get(codename=perm[0],
@@ -216,12 +221,12 @@ class UserenaManager(UserManager):
                                               codename=perm[0],
                                               content_type=model_content_type)
 
-        # it is safe to rely on settings.ANONYMOUS_USER_ID since it is a requirement of 
-        # django-guardian
-        for user in User.objects.exclude(id=settings.ANONYMOUS_USER_ID):
+        # it is safe to rely on settings.ANONYMOUS_USER_ID since it is a
+        # requirement of django-guardian
+        for user in get_user_model().objects.exclude(id=settings.ANONYMOUS_USER_ID):
             try:
                 user_profile = user.get_profile()
-            except get_profile_model().DoesNotExist:
+            except ObjectDoesNotExist:
                 warnings.append(_("No profile found for %(username)s") \
                                     % {'username': user.username})
             else:
