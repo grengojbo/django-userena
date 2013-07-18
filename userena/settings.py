@@ -1,3 +1,4 @@
+# -*- mode: python; coding: utf-8; -*-
 # Userena settings file.
 #
 # Please consult the docs for more information about each setting.

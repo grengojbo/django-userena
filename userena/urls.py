@@ -17,6 +17,10 @@ urlpatterns = patterns('',
     url(r'^signout/$',
        userena_views.signout,
        name='userena_signout'),
+    url(r'^ajax/register/$', userena_views.signup, {'template_name': 'userena/signup_ajax.html'}, name='userena_register'),
+    url(r'^ajax/login/$', userena_views.signin, {'template_name': 'userena/signin_ajax.html'}, name='userena_login'),
+    url(r'^ajax/reset/$', auth_views.password_reset, {'template_name': 'userena/password_reset_ajax.html',
+        'email_template_name': 'userena/emails/password_reset_message.txt'}, name='userena_reset'),
 
     # Reset password
     url(r'^password/reset/$',

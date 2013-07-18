@@ -1,0 +1,661 @@
+# 
+# Translators:
+# Jack <Wasd2007@meta.ua>, 2013.
+#  <oleg.dolya@gmail.com>, 2013.
+#  <shtapnyak@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: django-userena\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-19 21:38+0200\n"
+"PO-Revision-Date: 2013-02-25 11:38+0000\n"
+"Last-Translator: jbo <oleg.dolya@gmail.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/projects/p/django-userena/language/uk/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: forms.py:29
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: forms.py:30
+msgid "Username must contain only letters, numbers, dots and underscores."
+msgstr "Ім'я користувача має містити тільки букви, цифри, крапки і підкреслення."
+
+#: forms.py:33 forms.py:153 templates/userena/profile_detail.html:27
+msgid "Email"
+msgstr "E-Mail"
+
+#: forms.py:36
+msgid "Create password"
+msgstr "Виберіть пароль"
+
+#: forms.py:39
+msgid "Repeat password"
+msgstr "Повторіть пароль"
+
+#: forms.py:53
+msgid "This username is already taken."
+msgstr "Це ім'я користувача вже зайнято."
+
+#: forms.py:55
+msgid "This username is not allowed."
+msgstr "Це ім'я користувача не дозволено використовувати."
+
+#: forms.py:61 forms.py:195
+msgid "This email is already in use. Please supply a different email."
+msgstr "Цей email вже зайнятий. Будь ласка, введіть інший."
+
+#: forms.py:73
+msgid "The two password fields didn't match."
+msgstr "Введені паролі не співпадають."
+
+#: forms.py:117
+msgid "I have read and agree to the Terms of Service"
+msgstr "Я прочитав і згоден c умовами надання послуг."
+
+#: forms.py:118
+msgid "You must agree to the terms to register."
+msgstr "Ви повинні погодитися з умовами надання послуг."
+
+#: forms.py:131
+#, python-format
+msgid "%(label)s"
+msgstr "%(label)s"
+
+#: forms.py:134
+#, python-format
+msgid "%(error)s"
+msgstr "%(error)s"
+
+#: forms.py:141
+msgid "Email or username"
+msgstr "Електронна пошта або ім'я користувача"
+
+#: forms.py:142
+msgid "Either supply us with your email or username."
+msgstr "Введіть адресу електронної пошти або ім'я користувача."
+
+#: forms.py:143
+msgid "Password"
+msgstr "Пароль"
+
+#: forms.py:147
+#, python-format
+msgid "Remember me for %(days)s"
+msgstr "Запам'ятати мене %(days)s"
+
+#: forms.py:154
+msgid "Please supply your email."
+msgstr "Будь ласка, введіть адресу електронної пошти."
+
+#: forms.py:169
+msgid ""
+"Please enter a correct username or email and password. Note that both fields"
+" are case-sensitive."
+msgstr "Будь ласка, введіть правильне ім'я користувача або електронної пошти та пароль. Зверніть увагу, що обидва поля чутливі до регістра."
+
+#: forms.py:175 templates/userena/email_confirm_complete.html:6
+msgid "New email"
+msgstr "Нова адреса електронної пошти"
+
+#: forms.py:193
+msgid "You're already known under this email."
+msgstr "Ви вже зареєстровані під цією адресою email."
+
+#: forms.py:209
+msgid "First name"
+msgstr "Ім'я"
+
+#: forms.py:212
+msgid "Last name"
+msgstr "Прізвище"
+
+#: managers.py:228
+#, python-format
+msgid "No profile found for %(username)s"
+msgstr "Не знайдено профіль для %(username)s"
+
+#: models.py:46 tests/profiles/models.py:18 tests/profiles/models.py:32
+msgid "user"
+msgstr "Користувач"
+
+#: models.py:49
+msgid "last active"
+msgstr "остання активність"
+
+#: models.py:52
+msgid "The last date that the user was active."
+msgstr "Дата останньої активності користувача."
+
+#: models.py:54
+msgid "activation key"
+msgstr "Ключ активації"
+
+#: models.py:58
+msgid "notification send"
+msgstr "Повідомлення відіслане"
+
+#: models.py:60
+msgid ""
+"Designates whether this user has already got a notification about activating"
+" their account."
+msgstr "Підтвердження отримання користувачем повідомлення активації."
+
+#: models.py:62
+msgid "unconfirmed email address"
+msgstr "Непідтверджена адреса електронної пошти"
+
+#: models.py:64
+msgid "Temporary email address when the user requests an email change."
+msgstr "Тимчасова адреса e-mail, що використовується при запиті на зміну e-mail."
+
+#: models.py:66
+msgid "unconfirmed email verification key"
+msgstr "непідтверджений ключ активації"
+
+#: models.py:70
+msgid "creation date of email confirmation key"
+msgstr "Дата створення ключа активації"
+
+#: models.py:78
+msgid "userena registration"
+msgstr "реєстрація"
+
+#: models.py:79
+msgid "userena registrations"
+msgstr "реєстрації"
+
+#: models.py:201
+msgid "Open"
+msgstr "ВІдкрита"
+
+#: models.py:202
+msgid "Registered"
+msgstr "Зареєстровані"
+
+#: models.py:203
+msgid "Closed"
+msgstr "Закрита"
+
+#: models.py:210
+msgid "mugshot"
+msgstr "Фото"
+
+#: models.py:214
+msgid "A personal image displayed in your profile."
+msgstr "Особиста фотографія, яка відображається у профілі."
+
+#: models.py:216
+msgid "privacy"
+msgstr "Приватність"
+
+#: models.py:220
+msgid "Designates who can view your profile."
+msgstr "Визначає, хто може переглядати ваш профіль."
+
+#: models.py:299
+#, python-format
+msgid "%(first_name)s %(last_name)s"
+msgstr "%(last_name)s %(first_name)s"
+
+#: models.py:361
+msgid "language"
+msgstr "Мова"
+
+#: settings.py:39
+msgid "a month"
+msgstr "Місяц"
+
+#: views.py:135
+msgid "Your account has been activated and you have been signed in."
+msgstr "Ваш обліковий запис активований і ви тепер авторизовані."
+
+#: views.py:294
+msgid "You have been signed in."
+msgstr "Ви тепер авторизовані."
+
+#: views.py:512
+msgid "Your profile has been updated."
+msgstr "Ваш профіль оновлено."
+
+#: views.py:551
+msgid "You don't have permission to view this profile."
+msgstr "У вас немає дозволу для перегляду цього профілю."
+
+#: contrib/umessages/admin.py:25
+msgid "Date/time"
+msgstr "Дата/час"
+
+#: contrib/umessages/fields.py:56
+#, python-format
+msgid "The following usernames are incorrect: %(users)s."
+msgstr "Наступні імена користувачів не вірні: %(users)s."
+
+#: contrib/umessages/forms.py:10
+msgid "To"
+msgstr "Кому"
+
+#: contrib/umessages/forms.py:11
+msgid "Message"
+msgstr "Повідомлення"
+
+#: contrib/umessages/models.py:17
+msgid "from user"
+msgstr "Від користувача"
+
+#: contrib/umessages/models.py:20
+msgid "to user"
+msgstr "Користувачу"
+
+#: contrib/umessages/models.py:24
+msgid "latest message"
+msgstr "Останнє повідомлення"
+
+#: contrib/umessages/models.py:31
+msgid "contact"
+msgstr "Контакт"
+
+#: contrib/umessages/models.py:32
+msgid "contacts"
+msgstr "Контакти"
+
+#: contrib/umessages/models.py:35
+#, python-format
+msgid "%(from_user)s and %(to_user)s"
+msgstr "%(from_user)s і %(to_user)s"
+
+#: contrib/umessages/models.py:61 contrib/umessages/models.py:77
+msgid "recipient"
+msgstr "Одержувач"
+
+#: contrib/umessages/models.py:64 contrib/umessages/models.py:112
+msgid "message"
+msgstr "Повідомлення"
+
+#: contrib/umessages/models.py:66
+msgid "read at"
+msgstr "Прочитано"
+
+#: contrib/umessages/models.py:70
+msgid "recipient deleted at"
+msgstr "Видалено одержувачем"
+
+#: contrib/umessages/models.py:78 contrib/umessages/models.py:99
+msgid "recipients"
+msgstr "Одержувачі"
+
+#: contrib/umessages/models.py:81
+#, python-format
+msgid "%(message)s"
+msgstr "%(message)s"
+
+#: contrib/umessages/models.py:90
+msgid "body"
+msgstr "Тіло"
+
+#: contrib/umessages/models.py:94
+msgid "sender"
+msgstr "Відправник"
+
+#: contrib/umessages/models.py:101
+msgid "sent at"
+msgstr "Відправлено"
+
+#: contrib/umessages/models.py:104
+msgid "sender deleted at"
+msgstr "Видалено відправником"
+
+#: contrib/umessages/models.py:113
+msgid "messages"
+msgstr "Повідомлення"
+
+#: contrib/umessages/views.py:179
+msgid "Message is sent."
+msgstr "Повідомлення надіслано."
+
+#: contrib/umessages/views.py:263
+msgid "Message is succesfully restored."
+msgid_plural "Messages are succesfully restored."
+msgstr[0] "Сообщение успешно восстановлено."
+msgstr[1] "Сообщения успешно восстановлены."
+msgstr[2] "Повідомлення успішно відновлені."
+
+#: contrib/umessages/views.py:267
+msgid "Message is successfully removed."
+msgid_plural "Messages are successfully removed."
+msgstr[0] "Сообщение успешно удалено."
+msgstr[1] "Сообщения успешно удалены."
+msgstr[2] "Повідомлень успішно видалені."
+
+#: contrib/umessages/templates/umessages/message_form.html:4
+msgid "Compose"
+msgstr "Написати"
+
+#: contrib/umessages/templates/umessages/message_form.html:10
+msgid "Compose message"
+msgstr "Написати повідомлення"
+
+#: contrib/umessages/templates/umessages/message_form.html:13
+msgid "Send"
+msgstr "Відіслати"
+
+#: templates/userena/activate_fail.html:4
+msgid "Account activation failed."
+msgstr "Активація облікового запису не вдалася."
+
+#: templates/userena/activate_fail.html:5
+msgid "Your account could not be activated..."
+msgstr "Ваш обліковий запис не може бути активований ..."
+
+#: templates/userena/activate_fail.html:8
+msgid ""
+"Your account could not be activated. This could be because your activation "
+"link has aged."
+msgstr "Ваш обліковий запис не може бути активований. Можливо, ваш ключ авктіваціі застарів."
+
+#: templates/userena/activate_fail.html:9
+msgid ""
+"Please try signing up again or contact us if you think something went wrong."
+msgstr "Будь ласка, спробуйте увійти знову або зв'яжіться з нами, якщо ви думаєте, що щось пішло не так."
+
+#: templates/userena/disabled.html:4
+msgid "Disabled account"
+msgstr "Відключений обліковий запис."
+
+#: templates/userena/disabled.html:5
+msgid "Your account has been disabled"
+msgstr "Ваш обліковий запис був відключений"
+
+#: templates/userena/disabled.html:7
+msgid "It seems your account has been disabled."
+msgstr "Схоже, ваш обліковий запис був відключений."
+
+#: templates/userena/disabled.html:8
+msgid ""
+"If you feel that injustice has been done to you, feel free to contact the "
+"administrators to find out why"
+msgstr "Якщо ви вважаєте, що з вами вчинили несправедливо - зв'яжіться з адміністратором щоб дізнатися про причини."
+
+#: templates/userena/email_change_complete.html:4
+msgid "Email verification"
+msgstr "Підтвердження email"
+
+#: templates/userena/email_change_complete.html:5
+msgid "Confirm your new email"
+msgstr "Підтвердіть свій email"
+
+#: templates/userena/email_change_complete.html:8
+#, python-format
+msgid "You have received an email at %(email)s."
+msgstr "Ви отримали на email %(email)s."
+
+#: templates/userena/email_change_complete.html:9
+#, python-format
+msgid ""
+"To associate this email address with your account (%(username)s) click on "
+"the link provided in this email."
+msgstr "Щоб зв'язати цю адресу email з вашим обліковим записом (%(username)s) перейдіть за посиланням зазначеної у цьому повідомленні."
+
+#: templates/userena/email_confirm_complete.html:4
+msgid "Email changed!"
+msgstr "Email адресу змінено!"
+
+#: templates/userena/email_confirm_complete.html:8
+msgid ""
+"Your new email address is saved. You can continue using userena with this "
+"email."
+msgstr "Ваша нова адреса електронної пошти була збережена. Тепер Ви можете використовувати userena з ції електронної пошти."
+
+#: templates/userena/email_confirm_fail.html:4
+msgid "Email verification failed."
+msgstr "Email-активація не вдалась."
+
+#: templates/userena/email_confirm_fail.html:5
+#: templates/userena/email_confirm_fail.html:8
+msgid "Your email could not be verified..."
+msgstr "Неможливо підтвердити ваш email ..."
+
+#: templates/userena/email_confirm_fail.html:9
+msgid "You could try changing it again in your account settings."
+msgstr "Ви можете спробувати змінити його в налаштуваннях облікового запису."
+
+#: templates/userena/email_form.html:4 templates/userena/password_form.html:6
+#: templates/userena/profile_form.html:6
+#, python-format
+msgid "Account &raquo; %(username)s"
+msgstr "Обліковий запис &raquo; %(username)s"
+
+#: templates/userena/email_form.html:9 templates/userena/password_form.html:11
+#: templates/userena/profile_detail.html:14
+#: templates/userena/profile_form.html:12
+msgid "View profile"
+msgstr "Дивитися профіль"
+
+#: templates/userena/email_form.html:10
+#: templates/userena/password_form.html:12
+#: templates/userena/profile_form.html:13
+msgid "Edit profile"
+msgstr "Редагувати профіль"
+
+#: templates/userena/email_form.html:11 templates/userena/password_form.html:4
+#: templates/userena/password_form.html:13
+#: templates/userena/password_form.html:21
+#: templates/userena/profile_detail.html:16
+#: templates/userena/profile_form.html:14
+msgid "Change password"
+msgstr "Змінити пароль"
+
+#: templates/userena/email_form.html:12 templates/userena/email_form.html:19
+#: templates/userena/password_form.html:14
+#: templates/userena/profile_detail.html:17
+#: templates/userena/profile_form.html:15
+msgid "Change email"
+msgstr "Змінити email"
+
+#: templates/userena/email_form.html:16
+msgid "Change email address"
+msgstr "Адреса E-Mail"
+
+#: templates/userena/password_complete.html:4
+msgid "Password changed"
+msgstr "Пароль змінено"
+
+#: templates/userena/password_complete.html:5
+msgid "Your password has been changed"
+msgstr "Ваш пароль був змінений"
+
+#: templates/userena/password_complete.html:8
+msgid "From now on you can use your new password to signin"
+msgstr "Тепер ви можете використовувати ваш новий пароль для входу"
+
+#: templates/userena/password_form.html:17
+msgid "Change Password"
+msgstr "Змінити пароль"
+
+#: templates/userena/password_reset_complete.html:4
+msgid "Password reset"
+msgstr "Скидання пароля"
+
+#: templates/userena/password_reset_complete.html:5
+msgid "Your password has been reset"
+msgstr "Ваш пароль був скинутий"
+
+#: templates/userena/password_reset_complete.html:7
+msgid "You can now "
+msgstr "Тепер ви можете"
+
+#: templates/userena/password_reset_complete.html:7
+msgid "signin"
+msgstr "реєстр"
+
+#: templates/userena/password_reset_complete.html:7
+msgid "with your new password."
+msgstr "з новим паролем."
+
+#: templates/userena/password_reset_confirm_form.html:4
+#: templates/userena/password_reset_confirm_form.html:13
+#: templates/userena/password_reset_form.html:4
+msgid "Reset password"
+msgstr "Скидання пароля"
+
+#: templates/userena/password_reset_confirm_form.html:9
+#: templates/userena/password_reset_form.html:9
+msgid "Reset Password"
+msgstr "Скидання пароля"
+
+#: templates/userena/password_reset_done.html:4
+#: templates/userena/password_reset_done.html:5
+msgid "Reset password email is send"
+msgstr "Неправельно вказанний E-Mail, або пароль"
+
+#: templates/userena/password_reset_done.html:8
+msgid ""
+"An e-mail has been send to you which explains how to reset your password."
+msgstr "Вам було надіслано лист з інструкціею, як скинути пароль."
+
+#: templates/userena/password_reset_form.html:13
+msgid "Send password"
+msgstr "Надіслати пароль"
+
+#: templates/userena/profile_detail.html:4
+#, python-format
+msgid "%(username)s's profile."
+msgstr "%(username)s: профіль."
+
+#: templates/userena/profile_detail.html:15
+msgid "Edit details"
+msgstr "Детальне редагування"
+
+#: templates/userena/profile_detail.html:22
+msgid "Your mugshot"
+msgstr "Ваше зображення профілю"
+
+#: templates/userena/profile_detail.html:24
+msgid "Name"
+msgstr "Ім'я"
+
+#: templates/userena/profile_detail.html:30
+msgid "Age"
+msgstr "Вік"
+
+#: templates/userena/profile_detail.html:33
+msgid "Website"
+msgstr "Web-сайт"
+
+#: templates/userena/profile_detail.html:36
+msgid "Location"
+msgstr "Місце"
+
+#: templates/userena/profile_detail.html:39
+msgid "About me"
+msgstr "Про себе"
+
+#: templates/userena/profile_form.html:4
+msgid "Account setup"
+msgstr "Налаштування облікового запису"
+
+#: templates/userena/profile_form.html:19
+msgid "Edit Profile"
+msgstr "Змінити профіль"
+
+#: templates/userena/profile_form.html:22
+msgid "Save changes"
+msgstr "Зберегти зміни"
+
+#: templates/userena/profile_list.html:4
+msgid "Profiles"
+msgstr "Профілі"
+
+#: templates/userena/profile_list.html:21
+msgid "previous"
+msgstr "Попередній"
+
+#: templates/userena/profile_list.html:25
+#, python-format
+msgid ""
+"\n"
+"      Page %(page)s of %(num_pages)s\n"
+"      "
+msgstr "\n      Сторінка %(page)s з %(num_pages)s\n      "
+
+#: templates/userena/profile_list.html:31
+msgid "next"
+msgstr "Наступна"
+
+#: templates/userena/signin_form.html:4 templates/userena/signin_form.html:10
+#: templates/userena/signin_form.html:28
+msgid "Signin"
+msgstr "Реєстр"
+
+#: templates/userena/signin_form.html:29
+msgid "Forgot your password?"
+msgstr "Забули пароль?"
+
+#: templates/userena/signout.html:4
+msgid "Signed out"
+msgstr "Вийшов"
+
+#: templates/userena/signout.html:5
+msgid "You have been signed out"
+msgstr "Ви вийшли з"
+
+#: templates/userena/signout.html:8
+msgid "You have been signed out. Till we meet again."
+msgstr "Ви вийшли з системи. До зустрічі."
+
+#: templates/userena/signup_complete.html:4
+msgid "Signup almost done!"
+msgstr "Реєстрація майже закінчена!"
+
+#: templates/userena/signup_complete.html:6
+#: templates/userena/signup_form.html:4 templates/userena/signup_form.html:27
+msgid "Signup"
+msgstr "Реєстрація"
+
+#: templates/userena/signup_complete.html:9
+msgid "Thank you for signing up with us!"
+msgstr "Спасибі, що ви зареєструвалися у нас!"
+
+#: templates/userena/signup_complete.html:12
+msgid ""
+"You have been sent an e-mail with an activation link to the supplied email."
+msgstr "Лист з інструкціями що до активації відправлено на ваш E-Mail."
+
+#: templates/userena/signup_complete.html:13
+#, python-format
+msgid ""
+"We will store your signup information for %(userena_activation_days)s days "
+"on our server. "
+msgstr "Ваші реєстраційні дані будуть зберігатися протягом %(userena_activation_days)s днів."
+
+#: templates/userena/signup_complete.html:15
+msgid "You can now use the supplied credentials to signin."
+msgstr "Тепер ви можете увійти в систему з обліковими даними."
+
+#: tests/profile.py:6 tests/profiles/models.py:12
+msgid "Male"
+msgstr "Чоловічий"
+
+#: tests/profile.py:7 tests/profiles/models.py:13
+msgid "Female"
+msgstr "Жіночий"
+
+#: tests/profile.py:9 tests/profiles/models.py:21
+msgid "gender"
+msgstr "Стать"
+
+#: tests/profile.py:13 tests/profiles/models.py:25
+msgid "website"
+msgstr "Сайт"
+
+#: tests/profile.py:14 tests/profiles/models.py:26
+msgid "location"
+msgstr "Місце"
+
+#: tests/profile.py:15 tests/profiles/models.py:27
+msgid "about me"
+msgstr "Про себе"

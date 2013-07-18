@@ -1,1 +1,5 @@
 {% extends "base.html" %}
+{% block content %}{% block profile_content %}{% endblock %}{% endblock content %}
+{% block sidebar %}
+    {% block profile_navigation %}{% include 'userena/profile_navigation.html' %}{% endblock profile_navigation %}
+{% endblock sidebar %}

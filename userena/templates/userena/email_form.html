@@ -1,22 +1,20 @@
 {% extends 'userena/base_userena.html' %}
-{% load i18n %}
+{% load i18n widget_tweaks %}
 {% load url from future %}
 
 {% block content_title %}<h2>{% blocktrans with user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
 
 {% block content %}
-<form action="" method="post">
-  <ul id="box-nav">
-    <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'View profile' %}</span></a></li>
-    <li><a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit profile" %}</a></li>
-    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a></li>
-    <li class="last selected"><a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a></li>
-  </ul>
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Change email address" %}</legend>
-    {{ form.as_p }}
-  </fieldset>
-  <input type="submit" value="{% trans "Change email" %}" />
-</form>
+    <form action="" method="post">{% csrf_token %}
+        <fieldset>
+            <legend>{% trans "Change email address" %}</legend>
+            {% for field in form.visible_fields %}
+                {% include "userena/field.html" with field=field|add_class:"input-xxlarge" %}
+            {% endfor %}
+            {% for field in form.hidden_fields %}{{ field }}{% endfor %}
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{% trans "Change email" %}</button>
+        </div>
+    </form>
 {% endblock %}
