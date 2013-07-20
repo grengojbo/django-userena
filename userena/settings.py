@@ -35,6 +35,10 @@ USERENA_ACTIVATION_NOTIFY_DAYS = getattr(settings,
                                          'USERENA_ACTIVATION_NOTIFY_DAYS',
                                          5)
 
+USERENA_ACTIVATION_RETRY = getattr(settings,
+                                    'USERENA_ACTIVATION_RETRY',
+                                    False)
+
 USERENA_ACTIVATED = getattr(settings,
                             'USERENA_ACTIVATED',
                             'ALREADY_ACTIVATED')
