@@ -5,6 +5,10 @@ from django.conf import settings
 from django.contrib.auth.models import SiteProfileNotAvailable
 from django.conf import settings
 from userena import settings as userena_settings
+from django.contrib.sites.models import Site
+import logging
+
+logger = logging.getLogger(__name__)
 
 class UserenaLocaleMiddleware(object):
     """
@@ -16,7 +20,14 @@ class UserenaLocaleMiddleware(object):
     """
 
     def process_request(self, request):
-        lang_cookie = request.session.get(settings.LANGUAGE_COOKIE_NAME)
+        host = request.META["HTTP_HOST"]
+        try:
+            site = Site.objects.get(domain=host)
+            #site = qsite.id
+        except Site.DoesNotExist:
+            pass
+        site = Site.objects.get_current()
+        #lang_cookie = request.session.get(settings.LANGUAGE_COOKIE_NAME)
         #if not lang_cookie:
         if request.user.is_authenticated():
             try:
@@ -28,13 +39,19 @@ class UserenaLocaleMiddleware(object):
                 try:
                     lang = getattr(profile, userena_settings.USERENA_LANGUAGE_FIELD)
                     translation.activate(lang)
+                    logger.info("SET LANGUAGE: {0}".format(translation.get_language()))
                     request.LANGUAGE_CODE = translation.get_language()
                 except AttributeError:
                     pass
         else:
             try:
-                lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'uk')
+                if userena_settings.USERENA_LANG.has_key(host):
+                    lang = userena_settings.USERENA_LANG[host]
+                else:
+                    lang = getattr(settings, 'MODELTRANSLATION_DEFAULT_LANGUAGE', 'uk')
                 translation.activate(lang)
+                logger.info("SET LANGUAGE: {0}, host: {1}, site: {2}".format(translation.get_language(), host, site.id))
+                request.site = site
                 request.LANGUAGE_CODE = translation.get_language()
             except AttributeError:
                 pass
