@@ -107,3 +107,5 @@ USERENA_PROFILE_LIST_TEMPLATE = getattr(
     settings, 'USERENA_PROFILE_LIST_TEMPLATE', 'userena/profile_list.html')
 
 USERENA_HIDE_EMAIL = getattr(settings, 'USERENA_HIDE_EMAIL', False)
+
+USERENA_LANG = getattr(settings, 'USERENA_LANG', {'example.com': 'uk', 'ru.example.com': 'ru', 'en.example.com': 'en'})
