@@ -1,30 +1,26 @@
-from django.conf.urls.defaults import *
-from django.views.generic.base import TemplateView
+# -*- coding: utf-8 -*-
+from django.conf.urls import patterns, url
+#from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 from userena import views as userena_views
 from userena import settings as userena_settings
 
-urlpatterns = patterns('',
-    # Signup, signin and signout
-    url(r'^signup/$',
-       userena_views.signup,
-       name='userena_signup'),
-    url(r'^signin/$',
-       userena_views.signin,
-       name='userena_signin'),
-    url(r'^signout/$',
-       userena_views.signout,
-       name='userena_signout'),
-    url(r'^ajax/register/$', userena_views.signup, {'template_name': 'userena/signup_ajax.html'}, name='userena_register'),
-    url(r'^ajax/login/$', userena_views.signin, {'template_name': 'userena/signin_ajax.html'}, name='userena_login'),
-    url(r'^ajax/reset/$', auth_views.password_reset, {'template_name': 'userena/password_reset_ajax.html',
-        'email_template_name': 'userena/emails/password_reset_message.txt'}, name='userena_reset'),
+urlpatterns = patterns('', url(r'^signup/$', userena_views.signup, name='userena_signup'),
+                       url(r'^signin/$', userena_views.signin, name='userena_signin'),
+                       url(r'^signout/$', userena_views.signout, name='userena_signout'),
+                       url(r'^ajax/register/$', userena_views.signup, {'template_name': 'userena/signup_ajax.html'},
+                           name='userena_register'),
+                       url(r'^ajax/login/$', userena_views.signin, {'template_name': 'userena/signin_ajax.html'},
+                           name='userena_login'),
+                       url(r'^login/$', userena_views.logins, name='ajlogin'),
+                       url(r'^ajax/reset/$', auth_views.password_reset,
+                           {'template_name': 'userena/password_reset_ajax.html',
+                            'email_template_name': 'userena/emails/password_reset_message.txt'}, name='userena_reset'),
 
     # Reset password
-    url(r'^password/reset/$',
-       auth_views.password_reset,
+    url(r'^password/reset/$', auth_views.password_reset,
        {'template_name': 'userena/password_reset_form.html',
         'email_template_name': 'userena/emails/password_reset_message.txt'},
        name='userena_password_reset'),
@@ -41,8 +37,7 @@ urlpatterns = patterns('',
        {'template_name': 'userena/password_reset_complete.html'}),
 
     # Signup
-    url(r'^(?P<username>[\.\w-]+)/signup/complete/$',
-       userena_views.direct_to_user_template,
+    url(r'^(?P<username>[\.\w-]+)/signup/complete/$', userena_views.direct_to_user_template,
        {'template_name': 'userena/signup_complete.html',
         'extra_context': {'userena_activation_required': userena_settings.USERENA_ACTIVATION_REQUIRED,
                           'userena_activation_days': userena_settings.USERENA_ACTIVATION_DAYS}},

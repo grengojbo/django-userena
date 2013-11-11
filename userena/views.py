@@ -5,13 +5,14 @@ from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout as Signout
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from django.template.context import RequestContext
 from django.views.generic.list import ListView
 from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import ugettext as _
-from django.http import HttpResponseForbidden, Http404, HttpResponseRedirect
+from django.http import HttpResponseForbidden, Http404, HttpResponseRedirect, HttpResponse
 
 from userena.forms import (SignupForm, SignupFormOnlyEmail, AuthenticationForm,
                            ChangeEmailForm, EditProfileForm)
@@ -29,6 +30,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+
 class ExtraContextTemplateView(TemplateView):
     """ Add extra context to a simple template view """
     extra_context = None
@@ -42,13 +44,14 @@ class ExtraContextTemplateView(TemplateView):
     # this view is used in POST requests, e.g. signup when the form is not valid
     post = TemplateView.get
 
+
 class ProfileListView(ListView):
     """ Lists all profiles """
-    context_object_name='profile_list'
-    page=1
-    paginate_by=50
-    template_name=userena_settings.USERENA_PROFILE_LIST_TEMPLATE
-    extra_context=None
+    context_object_name = 'profile_list'
+    page = 1
+    paginate_by = 50
+    template_name = userena_settings.USERENA_PROFILE_LIST_TEMPLATE
+    extra_context = None
 
     def get_context_data(self, **kwargs):
         logging.info('ProfileListView')
@@ -60,7 +63,7 @@ class ProfileListView(ListView):
             page = self.page
 
         if userena_settings.USERENA_DISABLE_PROFILE_LIST \
-           and not self.request.user.is_staff:
+            and not self.request.user.is_staff:
             raise Http404
 
         if not self.extra_context: self.extra_context = dict()
@@ -75,6 +78,7 @@ class ProfileListView(ListView):
         profile_model = get_profile_model()
         queryset = profile_model.objects.get_visible_profiles(self.request.user)
         return queryset
+
 
 @secure_required
 def signup(request, signup_form=SignupForm,
@@ -127,17 +131,18 @@ def signup(request, signup_form=SignupForm,
             userena_signals.signup_complete.send(sender=None,
                                                  user=user)
 
-
-            if success_url: redirect_to = success_url
-            else: redirect_to = reverse('userena_signup_complete',
-                                        kwargs={'username': user.username})
+            if success_url:
+                redirect_to = success_url
+            else:
+                redirect_to = reverse('userena_signup_complete',
+                                      kwargs={'username': user.username})
 
             # A new signed user should logout the old one.
             if request.user.is_authenticated():
                 logout(request)
 
             if (userena_settings.USERENA_SIGNIN_AFTER_SIGNUP and
-                not userena_settings.USERENA_ACTIVATION_REQUIRED):
+                    not userena_settings.USERENA_ACTIVATION_REQUIRED):
                 user = authenticate(identification=user.email, check_password=False)
                 login(request, user)
 
@@ -147,6 +152,7 @@ def signup(request, signup_form=SignupForm,
     extra_context['form'] = form
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
 
 @secure_required
 def activate(request, activation_key,
@@ -204,24 +210,27 @@ def activate(request, activation_key,
                     messages.success(request, _('Your account has been activated and you have been signed in.'),
                                      fail_silently=True)
 
-                if success_url: redirect_to = success_url % {'username': user.username }
-                else: redirect_to = reverse('userena_profile_detail',
-                                            kwargs={'username': user.username})
+                if success_url:
+                    redirect_to = success_url % {'username': user.username}
+                else:
+                    redirect_to = reverse('userena_profile_detail',
+                                          kwargs={'username': user.username})
                 return redirect(redirect_to)
             else:
                 if not extra_context: extra_context = dict()
                 return ExtraContextTemplateView.as_view(template_name=template_name,
                                                         extra_context=extra_context)(
-                                        request)
+                    request)
         else:
             if not extra_context: extra_context = dict()
             extra_context['activation_key'] = activation_key
             return ExtraContextTemplateView.as_view(template_name=retry_template_name,
-                                                extra_context=extra_context)(request)
-    except UserenaSignup.DoesNotExist,e:
+                                                    extra_context=extra_context)(request)
+    except UserenaSignup.DoesNotExist, e:
         if not extra_context: extra_context = dict()
         return ExtraContextTemplateView.as_view(template_name=template_name,
                                                 extra_context=extra_context)(request)
+
 
 @secure_required
 def activate_retry(request, activation_key,
@@ -258,13 +267,14 @@ def activate_retry(request, activation_key,
             if new_key:
                 if not extra_context: extra_context = dict()
                 return ExtraContextTemplateView.as_view(template_name=template_name,
-                                                    extra_context=extra_context)(request)
+                                                        extra_context=extra_context)(request)
             else:
-                return redirect(reverse('userena_activate',args=(activation_key,)))
+                return redirect(reverse('userena_activate', args=(activation_key,)))
         else:
-            return redirect(reverse('userena_activate',args=(activation_key,)))
+            return redirect(reverse('userena_activate', args=(activation_key,)))
     except UserenaSignup.DoesNotExist:
-        return redirect(reverse('userena_activate',args=(activation_key,)))
+        return redirect(reverse('userena_activate', args=(activation_key,)))
+
 
 @secure_required
 def email_confirm(request, confirmation_key,
@@ -304,14 +314,17 @@ def email_confirm(request, confirmation_key,
             messages.success(request, _('Your email address has been changed.'),
                              fail_silently=True)
 
-        if success_url: redirect_to = success_url
-        else: redirect_to = reverse('userena_email_confirm_complete',
-                                    kwargs={'username': user.username})
+        if success_url:
+            redirect_to = success_url
+        else:
+            redirect_to = reverse('userena_email_confirm_complete',
+                                  kwargs={'username': user.username})
         return redirect(redirect_to)
     else:
         if not extra_context: extra_context = dict()
         return ExtraContextTemplateView.as_view(template_name=template_name,
-                                            extra_context=extra_context)(request)
+                                                extra_context=extra_context)(request)
+
 
 def direct_to_user_template(request, username, template_name,
                             extra_context=None):
@@ -350,6 +363,8 @@ def direct_to_user_template(request, username, template_name,
     extra_context['profile'] = user.get_profile()
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
+
 @secure_required
 def signin(request, auth_form=AuthenticationForm,
            template_name='userena/signin_form.html',
@@ -409,7 +424,8 @@ def signin(request, auth_form=AuthenticationForm,
                 login(request, user)
                 if remember_me:
                     request.session.set_expiry(userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
-                else: request.session.set_expiry(0)
+                else:
+                    request.session.set_expiry(0)
 
                 if userena_settings.USERENA_USE_MESSAGES:
                     messages.success(request, _('You have been signed in.'),
@@ -431,6 +447,35 @@ def signin(request, auth_form=AuthenticationForm,
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
 
+
+@csrf_exempt
+def logins(request):
+    #logger.debug('request.method: {0}'.format(request.method))
+    if request.method == 'POST':
+        request.session.set_test_cookie()
+        logger.debug('request.POST: {0}'.format(request.POST))
+        login_form = AuthenticationForm(request, request.POST)
+        #return HttpResponse('{"error":{"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}', mimetype="application/json")
+        if login_form.is_valid():
+            return HttpResponse('{"error":{"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}',
+                                mimetype="application/json")
+            #if request.is_ajax:
+            #    identification, password, remember_me = (login_form.cleaned_data['identification'],
+            #                                         login_form.cleaned_data['password'],
+            #                                         login_form.cleaned_data['remember_me'])
+            #    user = authenticate(identification=identification, password=password)
+            #    if user is not None:
+            #        #return HttpResponseRedirect(request.REQUEST.get('next', '/'))
+            #        return HttpResponse('{"error":{"text":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}', mimetype="application/json")
+            #    else:
+            #        return HttpResponse('{"error":{"text":"Username and Password are required."}}', mimetype="application/json")
+        else:
+            return HttpResponse('{"error":{"text":"Username and Password are required."}}', mimetype="application/json")
+    else:
+        #return HttpResponseForbidden() # catch invalid ajax and all non ajax**
+        return HttpResponse('{"error":{"text":"Username and Password are required."}}', mimetype="application/json")
+
+
 @secure_required
 def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
             template_name='userena/signout.html', *args, **kwargs):
@@ -450,6 +495,7 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
     if request.user.is_authenticated() and userena_settings.USERENA_USE_MESSAGES: # pragma: no cover
         messages.success(request, _('You have been signed out.'), fail_silently=True)
     return Signout(request, next_page, template_name, *args, **kwargs)
+
 
 @secure_required
 @permission_required_or_403('change_user', (get_user_model(), 'username', 'username'))
@@ -501,15 +547,17 @@ def email_change(request, username, email_form=ChangeEmailForm,
 
     if request.method == 'POST':
         form = email_form(user,
-                               request.POST,
-                               request.FILES)
+                          request.POST,
+                          request.FILES)
 
         if form.is_valid():
             email_result = form.save()
 
-            if success_url: redirect_to = success_url
-            else: redirect_to = reverse('userena_email_change_complete',
-                                        kwargs={'username': user.username})
+            if success_url:
+                redirect_to = success_url
+            else:
+                redirect_to = reverse('userena_email_change_complete',
+                                      kwargs={'username': user.username})
             return redirect(redirect_to)
 
     if not extra_context: extra_context = dict()
@@ -517,6 +565,7 @@ def email_change(request, username, email_form=ChangeEmailForm,
     extra_context['profile'] = user.get_profile()
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
 
 @secure_required
 @permission_required_or_403('change_user', (get_user_model(), 'username', 'username'))
@@ -572,9 +621,11 @@ def password_change(request, username, template_name='userena/password_form.html
             userena_signals.password_complete.send(sender=None,
                                                    user=user)
 
-            if success_url: redirect_to = success_url
-            else: redirect_to = reverse('userena_password_change_complete',
-                                        kwargs={'username': user.username})
+            if success_url:
+                redirect_to = success_url
+            else:
+                redirect_to = reverse('userena_password_change_complete',
+                                      kwargs={'username': user.username})
             return redirect(redirect_to)
 
     if not extra_context: extra_context = dict()
@@ -582,6 +633,8 @@ def password_change(request, username, template_name='userena/password_form.html
     extra_context['profile'] = user.get_profile()
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
+
 @secure_required
 @permission_required_or_403('change_profile', (get_profile_model(), 'user__username', 'username'))
 def profile_edit(request, username, edit_profile_form=EditProfileForm,
@@ -649,8 +702,10 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
                 messages.success(request, _('Your profile has been updated.'),
                                  fail_silently=True)
 
-            if success_url: redirect_to = success_url
-            else: redirect_to = reverse('userena_profile_detail', kwargs={'username': username})
+            if success_url:
+                redirect_to = success_url
+            else:
+                redirect_to = reverse('userena_profile_detail', kwargs={'username': username})
             return redirect(redirect_to)
 
     if not extra_context: extra_context = dict()
@@ -658,9 +713,11 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
     extra_context['profile'] = profile
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
+
 def profile_detail(request, username,
-    template_name=userena_settings.USERENA_PROFILE_DETAIL_TEMPLATE,
-    extra_context=None, **kwargs):
+                   template_name=userena_settings.USERENA_PROFILE_DETAIL_TEMPLATE,
+                   extra_context=None, **kwargs):
     """
     Detailed view of an user.
 
@@ -697,6 +754,7 @@ def profile_detail(request, username,
     extra_context['hide_email'] = userena_settings.USERENA_HIDE_EMAIL
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
+
 
 def profile_list(request, page=1, template_name='userena/profile_list.html',
                  paginate_by=50, extra_context=None, **kwargs): # pragma: no cover
@@ -747,7 +805,7 @@ def profile_list(request, page=1, template_name='userena/profile_list.html',
         page = page
 
     if userena_settings.USERENA_DISABLE_PROFILE_LIST \
-       and not request.user.is_staff:
+        and not request.user.is_staff:
         raise Http404
 
     profile_model = get_profile_model()
