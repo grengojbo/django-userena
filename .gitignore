@@ -34,3 +34,4 @@ demo/media/admin
 
 # Temp vim files
 *.swp
+atlassian-ide-plugin.xml
