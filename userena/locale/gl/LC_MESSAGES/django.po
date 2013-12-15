@@ -1,79 +1,84 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-10 18:02+0200\n"
-"PO-Revision-Date: 2013-04-10 15:51+0100\n"
-"Last-Translator: Thomas Lottermann <TomLottermann@googlemail.com>\n"
-"Language-Team: \n"
-"Language: \n"
+"POT-Creation-Date: 2013-11-30 17:14+0100\n"
+"PO-Revision-Date: 2013-11-30 17:15+0100\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: forms.py:31
 msgid "Username"
-msgstr "Benutzername"
+msgstr "Nome de usuario"
 
 #: forms.py:32 tests/forms.py:26
 msgid "Username must contain only letters, numbers, dots and underscores."
 msgstr ""
-"Der Benutzername darf nur Buchstaben, Ziffern, Punkte und Unterstriche "
-"enthalten."
+"Os nomes de usuario só deben conter letras, números, puntos e guións baixos."
 
 #: forms.py:35 forms.py:162 templates/userena/profile_detail.html:35
 msgid "Email"
-msgstr "E-Mail"
+msgstr "Correo electrónico"
 
 #: forms.py:38
 msgid "Create password"
-msgstr "Passwort erstellen"
+msgstr "Crear o contrasinal"
 
 #: forms.py:41
 msgid "Repeat password"
-msgstr "Passwort wiederholen"
+msgstr "Repetir o contrasinal"
 
 #: forms.py:56
 msgid ""
-"This username is already taken but not confirmed. Please check you email for "
-"verification steps."
+"This username is already taken but not confirmed. Please check your email "
+"for verification steps."
 msgstr ""
-"Dieser Benutzername ist bereits vergeben, wurde aber noch nicht aktiviert. "
-"Bitte suche in deinen E-Mails nach einer Aktivierungsemail."
+"Ese nome de usuario xa está collido pero non está confirmado. Envióuselle un "
+"correo a lista de pasos para confirmalo."
 
 #: forms.py:57 tests/forms.py:41
 msgid "This username is already taken."
-msgstr "Der Benutzername ist bereits vergeben."
+msgstr "Este nome de usuario xa está collido."
 
 #: forms.py:59 tests/forms.py:49
 msgid "This username is not allowed."
-msgstr "Der Benutzername ist nicht erlaubt."
+msgstr "Este nome de usuario non está permitido."
 
 #: forms.py:66
 msgid ""
-"This email is already in use but not confirmed. Please check you email for "
+"This email is already in use but not confirmed. Please check your email for "
 "verification steps."
 msgstr ""
-"Dieser Benutzername ist bereits vergeben, wurde aber noch nicht aktiviert. "
-"Bitte suche in deinen E-Mails nach einer Aktivierungsemail."
+"Ese enderezo de correo xa está collido pero non está confirmado. Envióuselle "
+"un correo a lista de pasos para confirmalo."
 
 #: forms.py:67 forms.py:204 tests/forms.py:57
 msgid "This email is already in use. Please supply a different email."
-msgstr "Die E-Mail-Adresse wird bereits benutzt. Bitte eine andere angeben."
+msgstr ""
+"O enderezo de correo indicado xa está rexistrado. Deberá escoller un "
+"enderezo distinto."
 
 #: forms.py:79 tests/forms.py:33
 msgid "The two password fields didn't match."
-msgstr "Die eingegebenen Passwörter stimmen nicht überein."
+msgstr "Os contrasinais non coincidían."
 
 #: forms.py:123
 msgid "I have read and agree to the Terms of Service"
-msgstr "Ich habe die Nutzungsbedingungen gelesen und akzeptiere sie."
+msgstr "Lin e acepto as condicións de uso."
 
 #: forms.py:124
 msgid "You must agree to the terms to register."
-msgstr ""
-"Du musst den Nutzungsbestimmungen zustimmen, um dich registrieren zu können."
+msgstr "Debe concordar coas condicións para rexistrarse."
 
 #: forms.py:140
 #, python-format
@@ -82,234 +87,240 @@ msgstr "%(error)s"
 
 #: forms.py:147
 msgid "Email or username"
-msgstr "E-Mail oder Benutzername"
+msgstr "Correo ou nome de usuario:"
 
 #: forms.py:148
 msgid "Either supply us with your email or username."
-msgstr "Gib deine E-Mail oder deinen Benutzername an."
+msgstr "Indique o seu enderezo de correo ou nome de usuario."
 
 #: forms.py:149
 msgid "Password"
-msgstr "Passwort"
+msgstr "Contrasinal"
 
 #: forms.py:153 forms.py:160
 #, python-format
 msgid "Remember me for %(days)s"
-msgstr "%(days)s lang angemeldet bleiben"
+msgstr "Lembrarme durante %(days)s"
 
 #: forms.py:163
 msgid "Please supply your email."
-msgstr "Bitte E-Mail angeben."
+msgstr "Indique o seu enderezo de correo."
 
 #: forms.py:178
 msgid ""
 "Please enter a correct username or email and password. Note that both fields "
 "are case-sensitive."
 msgstr ""
-"Bitte den korrekten Benutzername oder E-Mail und Passwort angeben. Bei "
-"beiden Feldern ist die Groß- und Kleinschreibung zu beachten."
+"Escriba un nome de usuario ou enderezo de correo e contrasinal correctos. "
+"Teña en conta que ambos os dous campos distinguen entre maiúsculas e "
+"minúsculas."
 
 #: forms.py:184 templates/userena/email_confirm_complete.html:6
 msgid "New email"
-msgstr "Neue E-Mail-Adresse"
+msgstr "Novo enderezo"
 
 #: forms.py:202
 msgid "You're already known under this email."
-msgstr "Du hast diese E-Mail-Adresse bereits angegeben."
+msgstr "Este enderezo xa está asignado a vostede."
 
 #: forms.py:218
 msgid "First name"
-msgstr "Vorname"
+msgstr "Nome de pía"
 
 #: forms.py:221
 msgid "Last name"
-msgstr "Nachname"
+msgstr "Apelidos"
 
-#: managers.py:229
+#: mail.py:35
+msgid "Either message_plain or message_html should be not None"
+msgstr ""
+"Polo menos un, «message_plain» ou «message_html», non debería ser "
+"«None» (nada)."
+
+#: managers.py:272
 #, python-format
 msgid "No profile found for %(username)s"
-msgstr "Kein Profil für %(username)s gefunden"
+msgstr "Non se atopou ningún perfil para %(username)s."
 
 #: models.py:48 tests/profiles/models.py:18 tests/profiles/models.py:32
 msgid "user"
-msgstr "Benutzer"
+msgstr "usuario"
 
 #: models.py:51
 msgid "last active"
-msgstr "Zuletzt aktiv"
+msgstr "última actividade"
 
 #: models.py:54
 msgid "The last date that the user was active."
-msgstr "Das Datum an dem der Benutzer zum letzten Mal aktiv war."
+msgstr "A data da última actividade do usuario."
 
 #: models.py:56
 msgid "activation key"
-msgstr "Aktivierungsschlüssel"
+msgstr "chave de activación"
 
 #: models.py:60
 msgid "notification send"
-msgstr "Benachrichtigung gesendet"
+msgstr "enviouse a notificación"
 
 #: models.py:62
 msgid ""
 "Designates whether this user has already got a notification about activating "
 "their account."
 msgstr ""
-"Zeigt an, ob der Benutzer bereits eine Aktivierungsbenachrichtigung erhalten "
-"hat."
+"Determina se o usuario xa recibiu unha notificación sobre a activación da "
+"súa conta."
 
 #: models.py:64
 msgid "unconfirmed email address"
-msgstr "unbestätigte E-Mail-Adresse"
+msgstr "enderezo de correo sen confirmar"
 
 #: models.py:66
 msgid "Temporary email address when the user requests an email change."
 msgstr ""
-"Vorläufige E-Mail-Adresse falls der Benutzer seine E-Mail-Adresse ändern "
-"möchte."
+"Enderezo de correo temporal cando o usuario solicita un cambio de enderezo."
 
 #: models.py:68
 msgid "unconfirmed email verification key"
-msgstr "unbestätigter E-Mail-Verifizierungsschlüssel"
+msgstr "chave de verificación do enderezo sen confirmar"
 
 #: models.py:72
 msgid "creation date of email confirmation key"
-msgstr "Erstellungsdatum des E-Mail-Verifizierungsschlüssels"
+msgstr "data de creación da chave de confirmación do enderezo"
 
 #: models.py:79
 msgid "userena registration"
-msgstr "userena Registrierung"
+msgstr "rexistro de userena"
 
 #: models.py:80
 msgid "userena registrations"
-msgstr "userena Registrierungen"
+msgstr "rexistros de userena"
 
-#: models.py:204
+#: models.py:240
 msgid "Open"
-msgstr "Offen"
+msgstr "Aberta"
 
-#: models.py:205
+#: models.py:241
 msgid "Registered"
-msgstr "Registriert"
+msgstr "Rexistrada"
 
-#: models.py:206
+#: models.py:242
 msgid "Closed"
-msgstr "Geschlossen"
+msgstr "Pechada"
 
-#: models.py:213
+#: models.py:249
 msgid "mugshot"
-msgstr "Porträt"
+msgstr "imaxe de perfil"
 
-#: models.py:217
+#: models.py:253
 msgid "A personal image displayed in your profile."
-msgstr "Ein persönliches Bild, das im Profil angezeigt wird."
+msgstr "Unha imaxe persoal que se mostra no perfil."
 
-#: models.py:219
+#: models.py:255
 msgid "privacy"
-msgstr "Privatsphäre"
+msgstr "intimidade"
 
-#: models.py:223
+#: models.py:259
 msgid "Designates who can view your profile."
-msgstr "Legt fest, wer dein Profil sehen kann."
+msgstr "Determina quen pode ver o seu perfil."
 
-#: models.py:302
+#: models.py:339
 #, python-format
 msgid "%(first_name)s %(last_name)s"
 msgstr "%(first_name)s %(last_name)s"
 
-#: models.py:367
+#: models.py:404
 msgid "language"
-msgstr "Sprache"
+msgstr "idioma"
 
-#: settings.py:43
+#: models.py:408
+msgid "Default language."
+msgstr "Idioma predeterminado."
+
+#: settings.py:47
 msgid "a month"
-msgstr "ein Monat"
+msgstr "un mes"
 
-#: views.py:188
+#: views.py:204
 msgid "Your account has been activated and you have been signed in."
-msgstr "Dein Account wurde aktiviert und du bist nun angemeldet."
+msgstr "Activouse a súa conta e iniciouse a súa sesión no sitio."
 
-#: views.py:235
+#: views.py:304
 msgid "Your email address has been changed."
-msgstr "Deine E-Mail-Adresse wurde geändert"
+msgstr "Cambiouse o seu enderezo de correo."
 
-#: views.py:346
+#: views.py:454
 msgid "You have been signed in."
-msgstr "Du bist nun angemeldet."
+msgstr "Accedeu ao sitio."
 
-#: views.py:382
+#: views.py:492
 msgid "You have been signed out."
-msgstr "Du bist jetzt abgemeldet."
+msgstr "Pechouse a súa sesión."
 
-#: views.py:580
+#: views.py:697
 msgid "Your profile has been updated."
-msgstr "Dein Profil wurde aktualisiert."
-
-#: views.py:625
-msgid "You don't have permission to view this profile."
-msgstr "Du hast keine Berechtigung, dieses Profil anzusehen."
+msgstr "Actualizouse o seu perfil."
 
 #: contrib/umessages/admin.py:25
 msgid "Date/time"
-msgstr "Datum/Zeit"
+msgstr "Data e hora"
 
 #: contrib/umessages/fields.py:57
 #, python-format
 msgid "The following usernames are incorrect: %(users)s."
-msgstr "Die folgenden Benutzernamen sind inkorrekt: %(users)s."
+msgstr "Os seguintes nomes de usuario son incorrectos: %(users)s."
 
 #: contrib/umessages/forms.py:10
 msgid "To"
-msgstr "An"
+msgstr "Para"
 
 #: contrib/umessages/forms.py:11
 msgid "Message"
-msgstr "Nachricht"
+msgstr "Mensaxe"
 
 #: contrib/umessages/models.py:17
 msgid "from user"
-msgstr "von Benutzer"
+msgstr "do usuario"
 
 #: contrib/umessages/models.py:20
 msgid "to user"
-msgstr "an Benutzer"
+msgstr "ao usuario"
 
 #: contrib/umessages/models.py:24
 msgid "latest message"
-msgstr "neueste Nachricht"
+msgstr "última mensaxe"
 
 #: contrib/umessages/models.py:31
 msgid "contact"
-msgstr "Kontakt"
+msgstr "contacto"
 
 #: contrib/umessages/models.py:32
 msgid "contacts"
-msgstr "Kontakte"
+msgstr "contactos"
 
 #: contrib/umessages/models.py:35
 #, python-format
 msgid "%(um_from_user)s and %(um_to_user)s"
-msgstr "%(um_from_user)s und %(um_to_user)s"
+msgstr "%(um_from_user)s e %(um_to_user)s"
 
 #: contrib/umessages/models.py:61 contrib/umessages/models.py:77
 msgid "recipient"
-msgstr "Empfänger"
+msgstr "destinatario"
 
 #: contrib/umessages/models.py:64 contrib/umessages/models.py:112
 msgid "message"
-msgstr "Nachricht"
+msgstr "mensaxe"
 
 #: contrib/umessages/models.py:66
 msgid "read at"
-msgstr "gelesen am"
+msgstr "lida o"
 
 #: contrib/umessages/models.py:70
 msgid "recipient deleted at"
-msgstr "Empfänger gelöscht am"
+msgstr "destinatario eliminado o"
 
 #: contrib/umessages/models.py:78 contrib/umessages/models.py:99
 msgid "recipients"
-msgstr "Empfänger"
+msgstr "destinatarios"
 
 #: contrib/umessages/models.py:81
 #, python-format
@@ -318,132 +329,172 @@ msgstr "%(message)s"
 
 #: contrib/umessages/models.py:90
 msgid "body"
-msgstr "Nachricht"
+msgstr "corpo"
 
 #: contrib/umessages/models.py:94
 msgid "sender"
-msgstr "Absender"
+msgstr "remitente"
 
 #: contrib/umessages/models.py:101
 msgid "sent at"
-msgstr "gesendet am"
+msgstr "enviado o"
 
 #: contrib/umessages/models.py:104
 msgid "sender deleted at"
-msgstr "Absender gelöscht am"
+msgstr "remitente eliminado o"
 
 #: contrib/umessages/models.py:113
 msgid "messages"
-msgstr "Nachrichten"
+msgstr "mensaxes"
 
 #: contrib/umessages/views.py:124
 msgid "Message is sent."
-msgstr "Nachricht wurde gesendet."
+msgstr "Enviouse a mensaxe."
 
 #: contrib/umessages/views.py:206
 msgid "Message is succesfully restored."
 msgid_plural "Messages are succesfully restored."
-msgstr[0] "Nachricht erfolgreich wiederhergestellt."
-msgstr[1] "Nachrichten erfolgreich wiederhergestellt."
+msgstr[0] "A mensaxe restaurouse correctamente."
+msgstr[1] "As mensaxes restauráronse correctamente."
 
 #: contrib/umessages/views.py:210
 msgid "Message is successfully removed."
 msgid_plural "Messages are successfully removed."
-msgstr[0] "Nachricht erfolgreich gelöscht."
-msgstr[1] "Nachrichten erfolgreich gelöscht."
+msgstr[0] "A mensaxe eliminouse correctamente."
+msgstr[1] "As mensaxes elimináronse correctamente."
 
 #: contrib/umessages/templates/umessages/message_detail.html:4
 #, python-format
 msgid "Conversation with %(recipient)s"
-msgstr "Koversation mit %(recipient)s"
+msgstr "Conversa con %(recipient)s"
 
 #: contrib/umessages/templates/umessages/message_detail.html:12
 #, python-format
 msgid "Received on %(sent_at)s"
-msgstr "Empfangen um %(sent_at)s"
+msgstr "Recibida o %(sent_at)s"
 
 #: contrib/umessages/templates/umessages/message_form.html:4
 #: contrib/umessages/templates/umessages/message_list.html:10
 msgid "Compose"
-msgstr "Verfassen"
+msgstr "Redactar"
 
 #: contrib/umessages/templates/umessages/message_form.html:10
 msgid "Compose message"
-msgstr "Nachricht verfassen"
+msgstr "Redactar unha mensaxe"
 
 #: contrib/umessages/templates/umessages/message_form.html:13
 msgid "Send"
-msgstr "Senden"
+msgstr "Enviar"
 
 #: contrib/umessages/templates/umessages/message_list.html:5
 msgid "Messages"
-msgstr "Nachrichten"
+msgstr "Mensaxes"
 
 #: contrib/umessages/templates/umessages/message_list.html:9
 #, python-format
 msgid "%(unread_message_count)s new messages."
-msgstr "%(unread_message_count)s neue Nachrichten."
+msgstr "%(unread_message_count)s mensaxes novas."
 
 #: contrib/umessages/templates/umessages/message_list.html:21
 #, python-format
 msgid "%(latest_message)s (%(unread_between_count)s new)"
-msgstr "%(latest_message)s (%(unread_between_count)s neu)"
+msgstr "%(latest_message)s (%(unread_between_count)s novas)"
 
 #: templates/userena/activate_fail.html:4
+#: templates/userena/activate_retry.html:6
 msgid "Account activation failed."
-msgstr "Account-Aktivierung fehlgeschlagen."
+msgstr "Non foi posíbel activar a conta."
 
 #: templates/userena/activate_fail.html:5
+#: templates/userena/activate_retry.html:7
 msgid "Your account could not be activated..."
-msgstr "Dein Account konnte nicht aktiviert werden..."
+msgstr "Non foi posíbel activar a súa conta…"
 
 #: templates/userena/activate_fail.html:8
 msgid ""
 "Your account could not be activated. This could be because your activation "
 "link has aged."
 msgstr ""
-"Dein Account konnte nicht aktiviert werden. Eventuell ist der "
-"Aktivierungslink zu alt."
+"Non foi posíbel activar a súa conta. Pode ser que caducase a súa ligazón de "
+"activación?"
 
 #: templates/userena/activate_fail.html:9
 msgid ""
 "Please try signing up again or contact us if you think something went wrong."
 msgstr ""
-"Bitte versuche dich noch einmal zu registrieren oder kontaktiere uns, falls "
-"es einen Fehler gab."
+"Intente rexistrarse de novo, ou contacte connosco se cre que se trata dun "
+"erro."
+
+#: templates/userena/activate_retry.html:10
+msgid "Your account could not be activated because activation link is expired."
+msgstr ""
+"Non foi posíbel activar a súa conta porque a ligazón de activación caducou."
+
+#: templates/userena/activate_retry.html:11
+msgid "Request a new activation link."
+msgstr "Solicitar unha nova ligazón de activación."
+
+#: templates/userena/activate_retry_success.html:6
+msgid "Account re-activation succeeded."
+msgstr "Re-activouse a súa conta."
+
+#: templates/userena/activate_retry_success.html:7
+msgid "Account re-activation"
+msgstr "Re-activación da conta"
+
+#: templates/userena/activate_retry_success.html:10
+msgid "You requested a new activation of your account.."
+msgstr "Solicitou que se volvese activar a súa conta."
+
+#: templates/userena/activate_retry_success.html:11
+#: templates/userena/signup_complete.html:12
+msgid ""
+"You have been sent an e-mail with an activation link to the supplied email."
+msgstr ""
+"Envióuselle unha mensaxe cunha ligazón de activación ao enderezo indicado."
+
+#: templates/userena/activate_retry_success.html:12
+#: templates/userena/signup_complete.html:13
+#, python-format
+msgid ""
+"We will store your signup information for %(userena_activation_days)s days "
+"on our server. "
+msgstr ""
+"Almacenarase a súa información de acceso durante %(userena_activation_days)s "
+"días no noso servidor."
 
 #: templates/userena/disabled.html:4
 msgid "Disabled account"
-msgstr "Deaktivierter Account"
+msgstr "Conta desactivada"
 
 #: templates/userena/disabled.html:5
 msgid "Your account has been disabled"
-msgstr "Dein Account ist deaktiviert"
+msgstr "A súa conta está desactivada."
 
 #: templates/userena/disabled.html:7
 msgid "It seems your account has been disabled."
-msgstr "Dein Account scheint deaktiviert worden zu sein."
+msgstr "Parece ser que a súa conta está desactivada."
 
 #: templates/userena/disabled.html:8
 msgid ""
 "If you feel that injustice has been done to you, feel free to contact the "
 "administrators to find out why"
 msgstr ""
-"Falls du dich ungerecht behandelt fühlst, kontaktiere bitte die "
-"Administratoren für die weitere Klärung."
+"Se lle parece que foi vítima dunha inxustiza, non dubide en contactar cos "
+"administradores para informarse das razóns que levaron a tomar esta medida."
 
 #: templates/userena/email_change_complete.html:4
 msgid "Email verification"
-msgstr "E-mail-Verifizierung"
+msgstr "Confirmación por correo"
 
 #: templates/userena/email_change_complete.html:5
 msgid "Confirm your new email"
-msgstr "Bestätige deine neue E-Mail-Adresse"
+msgstr "Confirme o seu novo enderezo"
 
 #: templates/userena/email_change_complete.html:8
 #, python-format
 msgid "You have received an email at %(email)s."
-msgstr "Du hast eine E-Mail an %(email)s erhalten."
+msgstr "Envióuselle un correo a %(email)s."
 
 #: templates/userena/email_change_complete.html:9
 #, python-format
@@ -451,54 +502,52 @@ msgid ""
 "To associate this email address with your account (%(username)s) click on "
 "the link provided in this email."
 msgstr ""
-"Um deine E-Mail-Adresse mit deinem Account (%(username)s) zu verbinden, "
-"klicke auf den Link in dieser E-Mail."
+"Para asociar este enderezo de correo coa súa conta, %(username)s, siga a "
+"ligazón incluída neste correo."
 
 #: templates/userena/email_confirm_complete.html:4
 msgid "Email changed!"
-msgstr "E-Mail-Adresse geändert!"
+msgstr "Actualizouse o seu enderezo"
 
 #: templates/userena/email_confirm_complete.html:8
 #, python-format
 msgid ""
 "Your new email address is saved. You can continue using %(site)s with this "
 "email."
-msgstr ""
-"Deine neue E-Mail-Adresse wurde gespeichert. Du kannst %(site)s ab jetzt mit "
-"dieser E-Mail benutzen."
+msgstr "Gardouse o seu novo enderezo de correo."
 
 #: templates/userena/email_confirm_fail.html:4
 msgid "Email verification failed."
-msgstr "E-Mail-Verifizierung fehlgeschlagen."
+msgstr "Non foi posíbel confirmar o enderezo"
 
 #: templates/userena/email_confirm_fail.html:5
 #: templates/userena/email_confirm_fail.html:8
 msgid "Your email could not be verified..."
-msgstr "Deine E-Mail konnte nicht verifiziert werden..."
+msgstr "Non foi posíbel comprobar o seu enderezo de correo electrónico."
 
 #: templates/userena/email_confirm_fail.html:9
 msgid "You could try changing it again in your account settings."
 msgstr ""
-"Du kannst es noch einmal in den Account Einstellungen versuchen, zu ändern."
+"Pode volver intentar cambialo desde a páxina de configuración da súa conta."
 
 #: templates/userena/email_form.html:5 templates/userena/password_form.html:7
 #: templates/userena/profile_form.html:7
 #, python-format
 msgid "Account &raquo; %(username)s"
-msgstr "Account &raquo; %(username)s"
+msgstr "Conta → %(username)s"
 
 #: templates/userena/email_form.html:10
 #: templates/userena/password_form.html:12
 #: templates/userena/profile_detail.html:16
 #: templates/userena/profile_form.html:13
 msgid "View profile"
-msgstr "Profil ansehen"
+msgstr "Ver o perfil"
 
 #: templates/userena/email_form.html:11
 #: templates/userena/password_form.html:13
 #: templates/userena/profile_form.html:14
 msgid "Edit profile"
-msgstr "Profil bearbeiten"
+msgstr "Editar o perfil"
 
 #: templates/userena/email_form.html:12 templates/userena/password_form.html:5
 #: templates/userena/password_form.html:14
@@ -506,130 +555,129 @@ msgstr "Profil bearbeiten"
 #: templates/userena/profile_detail.html:18
 #: templates/userena/profile_form.html:15
 msgid "Change password"
-msgstr "Passwort ändern"
+msgstr "Cambiar o contrasinal"
 
 #: templates/userena/email_form.html:13 templates/userena/email_form.html:20
 #: templates/userena/password_form.html:15
 #: templates/userena/profile_detail.html:19
 #: templates/userena/profile_form.html:16
 msgid "Change email"
-msgstr "E-Mail ändern"
+msgstr "Cambiar o correo electrónico"
 
 #: templates/userena/email_form.html:17
 msgid "Change email address"
-msgstr "E-Mail-Adresse ändern"
+msgstr "Cambiar o enderezo"
 
 #: templates/userena/password_complete.html:4
 msgid "Password changed"
-msgstr "Passwort geändert"
+msgstr "Cambiouse o contrasinal"
 
 #: templates/userena/password_complete.html:5
 msgid "Your password has been changed"
-msgstr "Dein Passwort wurde geändert"
+msgstr "Cambiouse o seu contrasinal"
 
 #: templates/userena/password_complete.html:8
 msgid "From now on you can use your new password to signin"
-msgstr "Ab jetzt kannst du dein neues Passwort zum Anmelden benutzen"
+msgstr ""
+"De agora en diante pode empregar o seu novo contrasinal para acceder ao "
+"sitio."
 
 #: templates/userena/password_form.html:18
 msgid "Change Password"
-msgstr "Passwort ändern"
+msgstr "Cambiar o contrasinal"
 
 #: templates/userena/password_reset_complete.html:5
 msgid "Password reset"
-msgstr "Passwort zurücksetzen"
+msgstr "Restableceuse o contrasinal"
 
 #: templates/userena/password_reset_complete.html:6
 msgid "Your password has been reset"
-msgstr "Dein Passwort wurde zurückgesetzt"
+msgstr "Restableceuse o seu contrasinal"
 
 #: templates/userena/password_reset_complete.html:9
 #, python-format
 msgid ""
 "You can now <a href=\"%(signin_url)s\">signin</a> with your new password."
 msgstr ""
-"Du kannst dich jetzt mit deinem neuen Passwort <a href=\"%(signin_url)s"
-"\">einloggen</a>."
+"Xa pode <a href=\"%(signin_url)s\">acceder</a> co seu novo contrasinal."
 
 #: templates/userena/password_reset_confirm_form.html:4
 #: templates/userena/password_reset_confirm_form.html:13
 #: templates/userena/password_reset_form.html:4
 msgid "Reset password"
-msgstr "Passwort zurücksetzen"
+msgstr "Solicitar un novo contrasinal"
 
 #: templates/userena/password_reset_confirm_form.html:9
 #: templates/userena/password_reset_form.html:9
 msgid "Reset Password"
-msgstr "Passwort zurücksetzen"
+msgstr "Solicitude dun novo contrasinal"
 
 #: templates/userena/password_reset_done.html:4
 #: templates/userena/password_reset_done.html:5
 msgid "Password reset email sent"
-msgstr "\"Passwort zurücksetzen\"-E-Mail wurde gesendet"
+msgstr "Enviouse unha mensaxe para restablecer o seu contrasinal"
 
 #: templates/userena/password_reset_done.html:8
 msgid ""
 "An e-mail has been sent to you which explains how to reset your password."
-msgstr ""
-"Eine E-Mail wurde an dich gesendet, in der erklärt wird, wie du dein "
-"Passwort zurücksetzen können."
+msgstr "Envióuselle un correo que explica como restablecer o seu contrasinal."
 
 #: templates/userena/password_reset_form.html:13
 msgid "Send password"
-msgstr "Passwort senden"
+msgstr "Enviar o contrasinal"
 
 #: templates/userena/profile_detail.html:5
 #, python-format
 msgid "%(username)s's profile."
-msgstr "Profil von %(username)s."
+msgstr "Perfil de %(username)s"
 
 #: templates/userena/profile_detail.html:17
 msgid "Edit details"
-msgstr "Details bearbeiten"
+msgstr "Editar os detalles"
 
 #: templates/userena/profile_detail.html:27
 msgid "Your mugshot"
-msgstr "Dein Profilbild"
+msgstr "A súa imaxe de perfil."
 
 #: templates/userena/profile_detail.html:31
 msgid "Name"
-msgstr "Name"
+msgstr "Nome"
 
 #: templates/userena/profile_detail.html:39
 msgid "Age"
-msgstr "Alter"
+msgstr "Idade"
 
 #: templates/userena/profile_detail.html:43
 msgid "Website"
-msgstr "Webseite"
+msgstr "Sitio web"
 
 #: templates/userena/profile_detail.html:47
 msgid "Location"
-msgstr "Ort"
+msgstr "Lugar"
 
 #: templates/userena/profile_detail.html:51
 msgid "About me"
-msgstr "Über mich"
+msgstr "Información persoal"
 
 #: templates/userena/profile_form.html:5
 msgid "Account setup"
-msgstr "Account Einstellungen"
+msgstr "Configuración da conta"
 
 #: templates/userena/profile_form.html:20
 msgid "Edit Profile"
-msgstr "Profil bearbeiten"
+msgstr "Editar o perfil"
 
 #: templates/userena/profile_form.html:23
 msgid "Save changes"
-msgstr "Änderungen speichern"
+msgstr "Gardar as modificacións"
 
 #: templates/userena/profile_list.html:5
 msgid "Profiles"
-msgstr "Profile"
+msgstr "Perfís"
 
 #: templates/userena/profile_list.html:22
 msgid "previous"
-msgstr "vorherige"
+msgstr "anterior"
 
 #: templates/userena/profile_list.html:26
 #, python-format
@@ -639,136 +687,170 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Seite %(page)s von %(num_pages)s\n"
-"        "
+"      Páxina %(page)s de %(num_pages)s\n"
+"      "
 
 #: templates/userena/profile_list.html:32
 msgid "next"
-msgstr "Nächste"
+msgstr "seguinte"
 
 #: templates/userena/signin_form.html:5 templates/userena/signin_form.html:11
 #: templates/userena/signin_form.html:29
 msgid "Signin"
-msgstr "Anmelden"
+msgstr "Acceder ao sitio"
 
 #: templates/userena/signin_form.html:30
 msgid "Forgot your password?"
-msgstr "Passwort vergessen?"
+msgstr "Esqueceu o contrasinal?"
 
 #: templates/userena/signout.html:4
 msgid "Signed out"
-msgstr "Abgemeldet"
+msgstr "Pechouse a sesión"
 
 #: templates/userena/signout.html:5
 msgid "You have been signed out"
-msgstr "Du hast dich abgemeldet"
+msgstr "Pechouse a súa sesión"
 
 #: templates/userena/signout.html:8
 msgid "You have been signed out. Till we meet again."
-msgstr "Du hast dich abgemeldet. Bis zum nächsten Mal."
+msgstr "Pechouse a súa sesión. Ata outra!"
 
 #: templates/userena/signup_complete.html:4
 msgid "Signup almost done!"
-msgstr "Registrierung fast geschafft!"
+msgstr "Xa case rematou o rexistro!"
 
 #: templates/userena/signup_complete.html:6
 #: templates/userena/signup_form.html:4 templates/userena/signup_form.html:10
 #: templates/userena/signup_form.html:28
 msgid "Signup"
-msgstr "Registrieren"
+msgstr "Rexistro"
 
 #: templates/userena/signup_complete.html:9
 msgid "Thank you for signing up with us!"
-msgstr "Danke, dass du dich bei uns registriert hast!"
-
-#: templates/userena/signup_complete.html:12
-msgid ""
-"You have been sent an e-mail with an activation link to the supplied email."
-msgstr "Dir wurde eine E-Mail mit einem Aktivierungslink geschickt."
-
-#: templates/userena/signup_complete.html:13
-#, python-format
-msgid ""
-"We will store your signup information for %(userena_activation_days)s days "
-"on our server. "
-msgstr ""
-"Deine Registrierungsinformationen werden für %(userena_activation_days)s "
-"Tage bei uns gespeichert."
+msgstr "Grazas por rexistrarse!"
 
 #: templates/userena/signup_complete.html:15
 msgid "You can now use the supplied credentials to signin."
-msgstr "Du kannst dich jetzt mit deinen Anmeldedaten anmelden."
+msgstr ""
+"Xa pode usar a información de acceso indicada para identificarse no sitio."
+
+#: templates/userena/emails/activation_email_message.html:4
+#: templates/userena/emails/confirmation_email_message_new.html:4
+#, python-format
+msgid "Dear %(username)s,</p>"
+msgstr "Estimado %(username)s.</p>"
+
+#: templates/userena/emails/activation_email_message.html:5
+#, python-format
+msgid "<p>Thank you for signing up at %(site)s.</p>"
+msgstr "<p>Grazas por rexistrar unha conta en %(site)s.</p>"
+
+#: templates/userena/emails/activation_email_message.html:7
+#: templates/userena/emails/activation_email_message.txt:6
+msgid "To activate your account you should click on the link below:"
+msgstr "Prema a seguinte ligazón para activar a súa conta:"
+
+#: templates/userena/emails/activation_email_message.html:11
+#: templates/userena/emails/activation_email_message.txt:10
+#: templates/userena/emails/confirmation_email_message_new.html:13
+#: templates/userena/emails/confirmation_email_message_new.txt:12
+#: templates/userena/emails/confirmation_email_message_old.html:13
+#: templates/userena/emails/confirmation_email_message_old.txt:8
+#: templates/userena/emails/password_reset_message.html:18
+#: templates/userena/emails/password_reset_message.txt:14
+msgid "Thanks for using our site!"
+msgstr "Grazas por usar o noso sitio!"
+
+#: templates/userena/emails/activation_email_message.html:12
+#: templates/userena/emails/activation_email_message.txt:12
+#: templates/userena/emails/confirmation_email_message_new.html:14
+#: templates/userena/emails/confirmation_email_message_new.txt:14
+#: templates/userena/emails/confirmation_email_message_old.html:16
+#: templates/userena/emails/confirmation_email_message_old.txt:10
+#: templates/userena/emails/password_reset_message.html:19
+#: templates/userena/emails/password_reset_message.txt:16
+msgid "Sincerely"
+msgstr "Atentamente,"
 
 #: templates/userena/emails/activation_email_message.txt:2
 #: templates/userena/emails/confirmation_email_message_new.txt:2
+#: templates/userena/emails/confirmation_email_message_old.html:4
 #: templates/userena/emails/confirmation_email_message_old.txt:2
 #, python-format
 msgid "Dear %(username)s,"
-msgstr "Hallo %(username)s,"
+msgstr "Estimado %(username)s."
 
 #: templates/userena/emails/activation_email_message.txt:4
 #, python-format
 msgid "Thank you for signing up at %(site)s."
-msgstr "Danke, dass Du dich bei %(site)s registriert hast!"
-
-#: templates/userena/emails/activation_email_message.txt:6
-msgid "To activate your account you should click on the link below:"
-msgstr "Um deinen Account zu aktivieren, klicke auf den unten stehenden Link:"
-
-#: templates/userena/emails/activation_email_message.txt:10
-#: templates/userena/emails/confirmation_email_message_new.txt:12
-#: templates/userena/emails/confirmation_email_message_old.txt:8
-#: templates/userena/emails/password_reset_message.txt:14
-msgid "Thanks for using our site!"
-msgstr "Danke, dass du dich bei uns registriert hast!"
-
-#: templates/userena/emails/activation_email_message.txt:12
-#: templates/userena/emails/confirmation_email_message_new.txt:14
-#: templates/userena/emails/confirmation_email_message_old.txt:10
-#: templates/userena/emails/password_reset_message.txt:16
-msgid "Sincerely"
-msgstr "Viele Grüße"
+msgstr "Grazas por rexistrar unha conta en %(site)s."
 
 #: templates/userena/emails/activation_email_subject.txt:2
 #, python-format
 msgid "Your signup at %(site)s."
-msgstr "Deine Registrierung auf %(site)s."
+msgstr "Rexistrouse en %(site)s"
 
+#: templates/userena/emails/confirmation_email_message_new.html:6
 #: templates/userena/emails/confirmation_email_message_new.txt:4
 #, python-format
 msgid "You requested a change of your email address at %(site)s."
-msgstr "Du willst deine E-Mail-Adresse auf %(site)s ändern."
+msgstr "Solicitou un cambio de enderezo de correo en %(site)s."
 
+#: templates/userena/emails/confirmation_email_message_new.html:9
 #: templates/userena/emails/confirmation_email_message_new.txt:7
 msgid "Please confirm this email address by clicking on the link below:"
 msgstr ""
-"Bitte bestätige deine E-Mail-Adresse mit einen Klick auf den unten stehenden "
-"Link:"
+"Para confirmar que esta nova conta de correo é súa, prema a seguinte ligazón:"
 
+#: templates/userena/emails/confirmation_email_message_old.html:6
 #: templates/userena/emails/confirmation_email_message_old.txt:4
 #, python-format
 msgid "There was a request to change your email address at %(site)s."
-msgstr "Es gibt eine Anfrage deine E-Mail-Adresse auf %(site)s zu ändern."
+msgstr ""
+"Alguén, seguramente vostede, solicitou en %(site)s cambiar o seu enderezo de "
+"correo."
 
+#: templates/userena/emails/confirmation_email_message_old.html:10
 #: templates/userena/emails/confirmation_email_message_old.txt:6
 #, python-format
 msgid ""
 "An email has been send to %(new_email)s which contains a verification link. "
 "Click on the link in this email to activate it."
 msgstr ""
-"Eine E-Mail mit einem Bestätigungslink wurde an %(new_email)s geschickt. "
-"Bitte klicke auf den Link in dieser E-Mail."
+"Enviouse un correo a %(new_email)s cunha ligazón de comprobación. Siga a "
+"ligazón do correo para activar o seu novo enderezo."
 
+#: templates/userena/emails/confirmation_email_subject_new.html:4
 #: templates/userena/emails/confirmation_email_subject_new.txt:2
 #, python-format
 msgid "Email verification for %(site)s."
-msgstr "E-Mail-Verifizierung für %(site)s"
+msgstr "Comprobación do seu novo enderezo para %(site)s"
 
 #: templates/userena/emails/confirmation_email_subject_old.txt:2
 #, python-format
 msgid "A request to change your email address is made at %(site)s."
 msgstr ""
-"Eine Anfrage deine E-Mail-Adresse auf %(site)s zu ändern wurde gestellt."
+"Alguén, seguramente vostede, solicitou en %(site)s cambiar o seu enderezo de "
+"correo."
+
+#: templates/userena/emails/password_reset_message.html:5
+#, python-format
+msgid ""
+"You're receiving this e-mail because you requested a password reset\n"
+"            for your user account at %(site_name)s"
+msgstr ""
+"Enviámoslle este correo porque solicitou que se lle restablecese o "
+"contrasinal da súa conta en %(site_name)s."
+
+#: templates/userena/emails/password_reset_message.html:9
+#: templates/userena/emails/password_reset_message.txt:5
+msgid "Please go to the following page and choose a new password:"
+msgstr "Siga a seguinte ligazón e escolla un novo contrasinal:"
+
+#: templates/userena/emails/password_reset_message.html:15
+#, python-format
+msgid "Your username, in case you've forgotten: %(username)s"
+msgstr "Por se o esqueceu, o seu nome de usuario é «%(username)s»."
 
 #: templates/userena/emails/password_reset_message.txt:2
 #, python-format
@@ -776,12 +858,8 @@ msgid ""
 "You're receiving this e-mail because you requested a password reset\n"
 "for your user account at %(site_name)s"
 msgstr ""
-"Du erhälst diese E-Mail, da du dein Passwort auf %(site_name)s zurücksetzen "
-"möchten."
-
-#: templates/userena/emails/password_reset_message.txt:5
-msgid "Please go to the following page and choose a new password:"
-msgstr "Bitte besuche folgende Seite und wähle ein neues Passwort;"
+"Enviámoslle este correo porque solicitou que se lle restablecese o "
+"contrasinal da súa conta en %(site_name)s."
 
 #: templates/userena/emails/password_reset_message.txt:10
 #, python-format
@@ -790,43 +868,34 @@ msgid ""
 "Your username, in case you've forgotten: %(username)s\n"
 msgstr ""
 "\n"
-"Dein Benutzername, nur falls du ihn vergessen haben solltest: %(username)s\n"
+"Por se o esqueceu, o seu nome de usuario é «%(username)s».\n"
 
 #: tests/profile.py:6 tests/profiles/models.py:12
 msgid "Male"
-msgstr "Männlich"
+msgstr "Home"
 
 #: tests/profile.py:7 tests/profiles/models.py:13
 msgid "Female"
-msgstr "Weiblich"
+msgstr "Muller"
 
 #: tests/profile.py:9 tests/profiles/models.py:21
 msgid "gender"
-msgstr "Geschlecht"
+msgstr "sexo"
 
 #: tests/profile.py:13 tests/profiles/models.py:25
 msgid "website"
-msgstr "Webseite"
+msgstr "sitio web"
 
 #: tests/profile.py:14 tests/profiles/models.py:26
 msgid "location"
-msgstr "Ort"
+msgstr "lugar"
 
 #: tests/profile.py:15 tests/profiles/models.py:27
 msgid "about me"
-msgstr "Über mich"
+msgstr "información persoal"
 
-#~ msgid "%(label)s"
-#~ msgstr "%(label)s"
+#~ msgid "Signups are disabled."
+#~ msgstr "Desactivouse o rexistro de novas contas."
 
-#~ msgid "You can now "
-#~ msgstr "Du darfst jetzt "
-
-#~ msgid "signin"
-#~ msgstr "anmelden"
-
-#~ msgid "with your new password."
-#~ msgstr "mit deinem neuen Passwort."
-
-#~ msgid "Reset password email is send"
-#~ msgstr "E-Mail wegen zurückgestztem Passwort wurde versendet"
+#~ msgid "You don't have permission to view this profile."
+#~ msgstr "Non ten permiso para ver este perfil."

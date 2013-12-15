@@ -47,7 +47,7 @@ def get_gravatar(email, size=80, default='identicon'):
     """
     if userena_settings.USERENA_MUGSHOT_GRAVATAR_SECURE:
         base_url = 'https://secure.gravatar.com/avatar/'
-    else: base_url = 'http://www.gravatar.com/avatar/'
+    else: base_url = '//www.gravatar.com/avatar/'
 
     gravatar_url = '%(base_url)s%(gravatar_id)s?' % \
             {'base_url': base_url,
@@ -97,9 +97,11 @@ def generate_sha1(string, salt=None):
     :return: Tuple containing the salt and hash.
 
     """
+    if not isinstance(string, (str, unicode)):
+        string = str(string)
     if not salt:
         salt = sha_constructor(str(random.random())).hexdigest()[:5]
-    hash = sha_constructor(salt+str(string)).hexdigest()
+    hash = sha_constructor(salt+str(string.encode('utf-8'))).hexdigest()
 
     return (salt, hash)
 
@@ -115,7 +117,7 @@ def get_profile_model():
            (not settings.AUTH_PROFILE_MODULE):
         raise SiteProfileNotAvailable
 
-    profile_mod = get_model(*settings.AUTH_PROFILE_MODULE.split('.'))
+    profile_mod = get_model(*settings.AUTH_PROFILE_MODULE.rsplit('.',1))
     if profile_mod is None:
         raise SiteProfileNotAvailable
     return profile_mod

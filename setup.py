@@ -6,7 +6,7 @@ userena = __import__('userena')
 readme_file = 'README.mkd'
 try:
     long_description = open(readme_file).read()
-except IOError, err:
+except IOError:
     sys.stderr.write("[ERROR] Cannot find file specified as "
         "``long_description`` (%s)\n" % readme_file)
     sys.exit(1)
@@ -25,6 +25,7 @@ setup(name='django-userena',
       install_requires = [
         'easy_thumbnails',
         'django-guardian>=1.1.0.beta',
+        'html2text',
         ### Required to build documentation
         # 'sphinx',
         # 'south',

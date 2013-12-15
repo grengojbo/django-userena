@@ -11,6 +11,7 @@ from django.template.context import RequestContext
 from django.views.generic.list import ListView
 from django.conf import settings
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext as _
 from django.http import HttpResponseForbidden, Http404, HttpResponseRedirect, HttpResponse
 
@@ -76,7 +77,7 @@ class ProfileListView(ListView):
 
     def get_queryset(self):
         profile_model = get_profile_model()
-        queryset = profile_model.objects.get_visible_profiles(self.request.user)
+        queryset = profile_model.objects.get_visible_profiles(self.request.user).select_related()
         return queryset
 
 
@@ -115,6 +116,10 @@ def signup(request, signup_form=SignupForm,
         Form supplied by ``signup_form``.
 
     """
+    # If signup is disabled, return 403
+    if userena_settings.USERENA_DISABLE_SIGNUP:
+        raise PermissionDenied
+
     # If no usernames are wanted and the default form is used, fallback to the
     # default form that doesn't display to enter the username.
     if userena_settings.USERENA_WITHOUT_USERNAMES and (signup_form == SignupForm):
@@ -364,7 +369,44 @@ def direct_to_user_template(request, username, template_name,
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
 
+def disabled_account(request, username, template_name, extra_context=None):
+    """
+    Checks if the account is disabled, if so, returns the disabled account template.
 
+    :param username:
+        String defining the username of the user that made the action.
+
+    :param template_name:
+        String defining the name of the template to use. Defaults to
+        ``userena/signup_complete.html``.
+
+    **Keyword arguments**
+
+    ``extra_context``
+        A dictionary containing extra variables that should be passed to the
+        rendered template. The ``account`` key is always the ``User``
+        that completed the action.
+
+    **Extra context**
+
+    ``viewed_user``
+        The currently :class:`User` that is viewed.
+
+    ``profile``
+        Profile of the viewed user.
+    
+    """
+    user = get_object_or_404(get_user_model(), username__iexact=username)
+
+    if user.is_active:
+        raise Http404
+
+    if not extra_context: extra_context = dict()
+    extra_context['viewed_user'] = user
+    extra_context['profile'] = user.get_profile()
+    return ExtraContextTemplateView.as_view(template_name=template_name,
+                                            extra_context=extra_context)(request)
+    
 @secure_required
 def signin(request, auth_form=AuthenticationForm,
            template_name='userena/signin_form.html',
@@ -431,6 +473,8 @@ def signin(request, auth_form=AuthenticationForm,
                     messages.success(request, _('You have been signed in.'),
                                      fail_silently=True)
 
+                #send a signal that a user has signed in
+                userena_signals.account_signin.send(sender=None, user=user)
                 # Whereto now?
                 redirect_to = redirect_signin_function(
                     request.REQUEST.get(redirect_field_name), user)
@@ -494,6 +538,7 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
     """
     if request.user.is_authenticated() and userena_settings.USERENA_USE_MESSAGES: # pragma: no cover
         messages.success(request, _('You have been signed out.'), fail_silently=True)
+    userena_signals.account_signout.send(sender=None, user=request.user)
     return Signout(request, next_page, template_name, *args, **kwargs)
 
 
@@ -542,7 +587,7 @@ def email_change(request, username, email_form=ChangeEmailForm,
 
     """
     user = get_object_or_404(get_user_model(), username__iexact=username)
-
+    prev_email = user.email
     form = email_form(user)
 
     if request.method == 'POST':
@@ -551,13 +596,17 @@ def email_change(request, username, email_form=ChangeEmailForm,
                           request.FILES)
 
         if form.is_valid():
-            email_result = form.save()
+            form.save()
 
             if success_url:
+                # Send a signal that the email has changed
+                userena_signals.email_change.send(sender=None,
+                                                  user=user,
+                                                  prev_email=prev_email,
+                                                  new_email=user.email)
                 redirect_to = success_url
-            else:
-                redirect_to = reverse('userena_email_change_complete',
-                                      kwargs={'username': user.username})
+            else: redirect_to = reverse('userena_email_change_complete',
+                                        kwargs={'username': user.username})
             return redirect(redirect_to)
 
     if not extra_context: extra_context = dict()
@@ -702,10 +751,8 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
                 messages.success(request, _('Your profile has been updated.'),
                                  fail_silently=True)
 
-            if success_url:
-                redirect_to = success_url
-            else:
-                redirect_to = reverse('userena_profile_detail', kwargs={'username': username})
+            if success_url: redirect_to = success_url
+            else: redirect_to = reverse('userena_profile_detail', kwargs={'username': username})
             return redirect(redirect_to)
 
     if not extra_context: extra_context = dict()
@@ -748,7 +795,7 @@ def profile_detail(request, username,
         profile = profile_model.objects.create(user=user)
 
     if not profile.can_view_profile(request.user):
-        return HttpResponseForbidden(_("You don't have permission to view this profile."))
+        raise PermissionDenied
     if not extra_context: extra_context = dict()
     extra_context['profile'] = user.get_profile()
     extra_context['hide_email'] = userena_settings.USERENA_HIDE_EMAIL

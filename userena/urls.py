@@ -22,7 +22,9 @@ urlpatterns = patterns('', url(r'^signup/$', userena_views.signup, name='userena
     # Reset password
     url(r'^password/reset/$', auth_views.password_reset,
        {'template_name': 'userena/password_reset_form.html',
-        'email_template_name': 'userena/emails/password_reset_message.txt'},
+        'email_template_name': 'userena/emails/password_reset_message.txt',
+        'extra_context': {'without_usernames': userena_settings.USERENA_WITHOUT_USERNAMES}
+        },
        name='userena_password_reset'),
     url(r'^password/reset/done/$',
        auth_views.password_reset_done,
@@ -71,7 +73,7 @@ urlpatterns = patterns('', url(r'^signup/$', userena_views.signup, name='userena
 
     # Disabled account
     url(r'^(?P<username>[\.\w-]+)/disabled/$',
-       userena_views.direct_to_user_template,
+       userena_views.disabled_account,
        {'template_name': 'userena/disabled.html'},
        name='userena_disabled'),
 

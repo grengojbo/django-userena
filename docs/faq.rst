@@ -22,9 +22,56 @@ follows:
 
     # Unregister userena's
     admin.site.unregister(YOUR_PROFILE_MODEL)
-
+                
     # Register your own admin class and attach it to the model
     admin.site.register(YOUR_PROFILE_MODEL, YOUR_PROFILE_ADMIN)
+
+Can I still add users manually?
+-------------------------------           
+Yes, but Userena requires there to be a `UserenaSignup` object for every
+registered user. If it's not there, you could receive the following error:
+
+.. code-block:: python
+
+                Exception Type: DoesNotExist at /accounts/mynewuser/email/
+
+So, whenever you are manually creating a user (outside of Userena), don't
+forget to also create a `UserenaSignup` object.
+
+How can I have multiple profiles per user?
+------------------------------------------
+
+One way to do this is by overriding the `save` method on `SignupForm` with
+your own form, extending userena's form and supply this form with to the
+signup view. For example:
+
+.. code-block:: python
+
+    def save(self):
+        """ My extra profile """
+        # Let userena do it's thing
+        user = super(SignupForm, self).save()
+
+        # You do all the logic needed for your own extra profile
+        custom_profile = ExtraProfile()
+        custom_profile.extra_field = self.cleaned_data['field']
+        custom_profile.save()
+
+        # Always return the new user
+        return user
+
+Important to note here is that you should always return the newly created
+`User` object. This is something that userena expects. Userena will take care
+of creating the user and the "standard" profile.
+
+Don't forget to supply your own form to the signup view by overriding the URL
+in your `urls.py`:
+
+.. code-block:: python
+
+     (r'^accounts/signup/$',
+      'userena.views.signup',
+      {'signup_form': SignupExtraProfileForm}),
 
 How do I add extra fields to forms?
 -----------------------------------
