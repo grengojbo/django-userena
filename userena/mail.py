@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# -*- mode: python; coding: utf-8; -*-
+from __future__ import unicode_literals
 import re
 from StringIO import StringIO
 
@@ -9,6 +10,8 @@ from html2text import html2text as html2text_orig
 
 
 LINK_RE = re.compile(r"https?://([^ \n]+\n)+[^ \n]+", re.MULTILINE)
+
+
 def html2text(html):
     """Use html2text but repair newlines cutting urls.
     Need to use this hack until
@@ -24,6 +27,7 @@ def html2text(html):
     out.write(txt[pos:])
     return out.getvalue()
 
+
 def send_mail(subject, message_plain, message_html, email_from, email_to,
               custom_headers={}, attachments=()):
     """
@@ -36,13 +40,7 @@ def send_mail(subject, message_plain, message_html, email_from, email_to,
 
     if not message_plain:
         message_plain = html2text(message_html)
-
-    message = {}
-
-    message['subject'] = subject
-    message['body'] = message_plain
-    message['from_email'] = email_from
-    message['to'] = email_to
+    message = {'subject': subject, 'body': message_plain, 'from_email': email_from, 'to': email_to}
     if attachments:
         message['attachments'] = attachments
     if custom_headers:

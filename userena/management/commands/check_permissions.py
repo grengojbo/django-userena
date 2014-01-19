@@ -1,7 +1,9 @@
+# -*- mode: python; coding: utf-8; -*-
+from __future__ import unicode_literals
 from django.core.management.base import NoArgsCommand, BaseCommand
 from optparse import make_option
-
 from userena.models import UserenaSignup
+
 
 class Command(NoArgsCommand):
     """
@@ -23,6 +25,7 @@ class Command(NoArgsCommand):
         )
     
     help = 'Check that user permissions are correct.'
+
     def handle_noargs(self, **options):
         permissions, users, warnings  = UserenaSignup.objects.check_permissions()
         output = options.pop("output")
