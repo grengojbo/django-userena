@@ -10,6 +10,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class UserenaLocaleMiddleware(object):
     """
     Set the language by looking at the language setting in the profile.
@@ -21,11 +22,12 @@ class UserenaLocaleMiddleware(object):
 
     def process_request(self, request):
         host = request.META["HTTP_HOST"]
+        logger.debug("HTTP_HOST: %s", host)
         try:
             site = Site.objects.get(domain=host)
             #site = qsite.id
         except Site.DoesNotExist:
-            pass
+            logger.error('Site.DoesNotExist')
         site = Site.objects.get_current()
         #lang_cookie = request.session.get(settings.LANGUAGE_COOKIE_NAME)
         #if not lang_cookie:

@@ -1,4 +1,5 @@
 # -*- mode: python; coding: utf-8; -*-
+from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
@@ -67,7 +68,8 @@ class ProfileListView(ListView):
             and not self.request.user.is_staff:
             raise Http404
 
-        if not self.extra_context: self.extra_context = dict()
+        if not self.extra_context:
+            self.extra_context = dict()
 
         context['page'] = page
         context['paginate_by'] = self.paginate_by
@@ -153,7 +155,8 @@ def signup(request, signup_form=SignupForm,
 
             return redirect(redirect_to)
 
-    if not extra_context: extra_context = dict()
+    if not extra_context:
+        extra_context = dict()
     extra_context['form'] = form
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
@@ -483,7 +486,8 @@ def signin(request, auth_form=AuthenticationForm,
                 return redirect(reverse('userena_disabled',
                                         kwargs={'username': user.username}))
 
-    if not extra_context: extra_context = dict()
+    if not extra_context:
+        extra_context = dict()
     extra_context.update({
         'form': form,
         'next': request.REQUEST.get(redirect_field_name),

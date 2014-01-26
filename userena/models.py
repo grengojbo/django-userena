@@ -14,9 +14,7 @@ import datetime
 from .mail import send_mail
 
 
-PROFILE_PERMISSIONS = (
-            ('view_profile', 'Can view profile'),
-)
+PROFILE_PERMISSIONS = (('view_profile', 'Can view profile'),)
 
 
 def upload_to_mugshot(instance, filename):
@@ -259,7 +257,6 @@ class UserenaBaseProfile(models.Model):
 
     objects = UserenaBaseProfileManager()
 
-
     class Meta:
         """
         Meta options making the model abstract and defining permissions.
@@ -380,8 +377,7 @@ class UserenaBaseProfile(models.Model):
         if self.privacy == 'open':
             return True
         # Registered users.
-        elif self.privacy == 'registered' \
-        and isinstance(user, get_user_model()):
+        elif self.privacy == 'registered' and isinstance(user, get_user_model()):
             return True
 
         # Checks done by guardian for owner and admins.
