@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.text import Truncator
-#from django.utils.text import truncate_words
 
+from userena.utils import truncate_words
 from userena.contrib.umessages.managers import (MessageManager, MessageContactManager,
                                                 MessageRecipientManager)
 from userena.utils import user_model_label
@@ -115,8 +114,7 @@ class Message(models.Model):
 
     def __unicode__(self):
         """ Human representation, displaying first ten words of the body. """
-        # truncated_body = truncate_words(self.body, 10)
-        truncated_body = Truncator(self.body).words(10, truncate='...')
+        truncated_body = truncate_words(self.body, 10)
         return "%(truncated_body)s" % {'truncated_body': truncated_body}
 
     def save_recipients(self, um_to_user_list):
