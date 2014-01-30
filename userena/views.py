@@ -33,6 +33,16 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+class JSONResponse(HttpResponse):
+    """
+    An HttpResponse that renders its content into JSON.
+    """
+    def __init__(self, data, **kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
+        
+
 class ExtraContextTemplateView(TemplateView):
     """ Add extra context to a simple template view """
     extra_context = None
