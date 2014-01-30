@@ -372,6 +372,7 @@ def direct_to_user_template(request, username, template_name,
     return ExtraContextTemplateView.as_view(template_name=template_name,
                                             extra_context=extra_context)(request)
 
+
 def disabled_account(request, username, template_name, extra_context=None):
     """
     Checks if the account is disabled, if so, returns the disabled account template.

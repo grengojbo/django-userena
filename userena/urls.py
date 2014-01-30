@@ -7,9 +7,12 @@ from django.contrib.auth import views as auth_views
 from userena import views as userena_views
 from userena import settings as userena_settings
 
-urlpatterns = patterns('', url(r'^signup/$', userena_views.signup, name='userena_signup'),
+urlpatterns = patterns('', url(r'^signup/$', userena_views.signup, {'template_name': 'userena/signup.html'},
+                               name='userena_signup'),
+                       url(r'^login/$', userena_views.signin, {'template_name': 'userena/login.html'},
+                       name='jbo_login'),
                        url(r'^signin/$', userena_views.signin, name='userena_signin'),
-                       url(r'^signout/$', userena_views.signout, name='userena_signout'),
+                       #url(r'^signout/$', userena_views.signout, name='userena_signout'),
                        url(r'^ajax/register/$', userena_views.signup, {'template_name': 'userena/signup_ajax.html'},
                            name='userena_register'),
                        url(r'^ajax/login/$', userena_views.signin, {'template_name': 'userena/signin_ajax.html'},
